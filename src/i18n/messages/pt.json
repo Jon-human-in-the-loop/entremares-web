@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Início",
+    "giftPacks": "Packs de Presente",
+    "about": "Sobre",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Entremares",
+    "subtitle": "Alfajores Artesanais Premium",
+    "description": "Descubra a riqueza da tradição em cada mordida. Os nossos alfajores artesanais são feitos à mão com paixão, usando métodos tradicionais e ingredientes premium.",
+    "exploreButton": "Explorar Packs",
+    "storyButton": "A Nossa História"
+  },
+  "packs": {
+    "featured": "Packs Curados",
+    "classic": "Pack Clássico",
+    "premium": "Pack Premium",
+    "special": "Edição Especial"
+  },
+  "packDetails": {
+    "pieces": "peças",
+    "price": "Preço",
+    "ingredients": "Ingredientes",
+    "weight": "Peso",
+    "flavors": "Sabores",
+    "available": "Em Stock",
+    "outOfStock": "Esgotado",
+    "mostPopular": "Mais Popular",
+    "limitedEdition": "Edição Limitada"
+  },
+  "cart": {
+    "addToCart": "Adicionar ao Carrinho",
+    "cartEmpty": "O seu carrinho está vazio",
+    "items": "artigos",
+    "total": "Total"
+  },
+  "brand": {
+    "heritage": "A Nossa História",
+    "story": "Na Entremares, acreditamos no poder da tradição e na alegria de dar. Cada alfajor é um testemunho de gerações de artesanato, feito com amor e os melhores ingredientes.",
+    "craftsmanship": "Descubra a riqueza da tradição e do sabor autêntico em cada alfajor."
+  },
+  "pages": {
+    "about": "Sobre",
+    "aboutTitle": "A Nossa História",
+    "contact": "Contacto",
+    "contactTitle": "Entre em Contacto",
+    "contactDescription": "Tem dúvidas? Adoraríamos ouvir você."
+  },
+  "form": {
+    "name": "Nome",
+    "email": "Email",
+    "message": "Mensagem",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "Obrigado! Entraremos em contacto em breve.",
+    "error": "Algo correu mal. Por favor, tente novamente."
+  },
+  "footer": {
+    "brand": "Entremares",
+    "tagline": "Alfajores Artesanais Premium",
+    "quickLinks": "Links Rápidos",
+    "contact": "Contacto",
+    "email": "info@entremares.pt",
+    "copyright": "Todos os direitos reservados."
+  },
+  "errors": {
+    "notFound": "Pack não encontrado",
+    "notFoundDescription": "Desculpe, o pack que procura não existe."
+  }
+}

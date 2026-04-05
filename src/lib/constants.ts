@@ -1,58 +1,78 @@
-/**
- * Brand and application constants
- */
+import type { GiftPack } from '@/types'
 
 export const BRAND = {
   name: 'Entremares',
   tagline: 'Premium Artisanal Alfajores',
-  description: 'Discover the rich heritage of craftsmanship in every bite. Our artisanal alfajores are handcrafted with passion using traditional methods and premium ingredients.',
   baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://entremares.pt',
 } as const
 
-export const SITE_METADATA = {
-  title: `${BRAND.name} - ${BRAND.tagline}`,
-  description: BRAND.description,
-  lang: 'en',
-  locale: 'en_US',
-  twitterHandle: '@entremares',
-} as const
-
-export const NAVIGATION = [
-  { label: 'Home', href: '/' },
-  { label: 'Gift Packs', href: '/gift-packs' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-] as const
-
-export const COLORS = {
-  warmGold: '#d4a574',
-  honey: '#e8d4b0',
-  earthBrown: '#8b6f47',
-  darkBrown: '#5c4033',
-  cream: '#faf6f1',
-  warmWhite: '#fefdfb',
-} as const
-
-export const GIFT_PACKS = [
+export const GIFT_PACKS: GiftPack[] = [
   {
     id: 'classic-6',
-    name: 'Classic Pack',
+    slug: 'classic-6',
+    name: 'Pack Clássico',
     pieces: 6,
-    description: 'A delightful selection of our signature flavors. Perfect for first-time tasters.',
+    price: 1890,
+    available: true,
+    isFeatured: true,
+    description: 'Uma seleção deliciosa dos nossos sabores mais icónicos. Perfeito para uma primeira experiência.',
+    longDescription: 'O Pack Clássico é uma introdução perfeita aos alfajores Entremares. Cada peça é feita à mão com ingredientes premium e técnicas tradicionais, refletindo séculos de herança artesanal. Esta seleção curada oferece uma experiência completa dos nossos sabores mais amados.',
     image: '/images/packs/classic-6.jpg',
+    weight: '180g',
+    ingredients: 'Farinha de trigo, manteiga, dulce de leche, chocolate de cobertura.',
+    flavors: [
+      { id: 'dulce-leche', name: 'Dulce de Leche', description: 'O clássico original', isSignature: true },
+      { id: 'chocolate', name: 'Chocolate', description: 'Cobertura de chocolate belga' },
+      { id: 'limon', name: 'Limão', description: 'Creme de limão artesanal' },
+    ],
   },
   {
     id: 'premium-12',
-    name: 'Premium Pack',
+    slug: 'premium-12',
+    name: 'Pack Premium',
     pieces: 12,
-    description: 'Our most popular selection. A complete experience of artisanal craftsmanship.',
+    price: 3290,
+    available: true,
+    isFeatured: true,
+    badge: 'mostPopular',
+    description: 'A nossa seleção mais completa. Uma experiência artesanal de excelência.',
+    longDescription: 'O Pack Premium é o nosso bestseller, oferecendo uma variedade impressionante de sabores premium. Com 12 peças cuidadosamente selecionadas, é o presente perfeito para quem aprecia qualidade e diversidade. Ideal para compartilhar ou para um presente muito especial.',
     image: '/images/packs/premium-12.jpg',
+    weight: '360g',
+    ingredients: 'Farinha de trigo, manteiga, dulce de leche, chocolate de cobertura, framboesa.',
+    flavors: [
+      { id: 'dulce-leche', name: 'Dulce de Leche', description: 'O clássico original', isSignature: true },
+      { id: 'chocolate', name: 'Chocolate', description: 'Cobertura de chocolate belga' },
+      { id: 'limon', name: 'Limão', description: 'Creme de limão artesanal' },
+      { id: 'framboesa', name: 'Framboesa', description: 'Doce de framboesa caseiro' },
+      { id: 'cafe', name: 'Café', description: 'Ganache de café expresso' },
+    ],
   },
   {
     id: 'special-edition',
-    name: 'Special Edition',
+    slug: 'special-edition',
+    name: 'Edição Especial',
     pieces: 12,
-    description: 'Limited edition flavors and premium gift packaging for special occasions.',
+    price: 4490,
+    available: true,
+    isFeatured: true,
+    badge: 'limitedEdition',
+    description: 'Sabores de edição limitada em embalagem premium para ocasiões especiais.',
+    longDescription: 'A Edição Especial é o auge da arte de fazer alfajores. Com ingredientes raros e sabores inovadores, cada peça é uma obra-prima. Embalagem premium com apresentação que reflete a qualidade excepcional do produto. Disponível em quantidade limitada.',
     image: '/images/packs/special-edition.jpg',
+    weight: '360g',
+    ingredients: 'Farinha de trigo, manteiga, dulce de leche, chocolate belga, pistácio, flor de sal.',
+    flavors: [
+      { id: 'pistacio', name: 'Pistácio', description: 'Creme artesanal de pistácio' },
+      { id: 'flor-sal', name: 'Flor de Sal', description: 'Dulce de leche com flor de sal do Algarve' },
+      { id: 'trufa', name: 'Trufa Negra', description: 'Ganache de trufa com chocolate negro 70%' },
+    ],
   },
+]
+
+export const NAVIGATION = [
+  { label: 'home', href: '/' },
+  { label: 'giftPacks', href: '/gift-packs' },
+  { label: 'about', href: '/about' },
+  { label: 'contact', href: '/contact' },
 ] as const

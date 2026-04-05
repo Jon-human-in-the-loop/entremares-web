@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "giftPacks": "Gift Packs",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Entremares",
+    "subtitle": "Premium Artisanal Alfajores",
+    "description": "Discover the rich heritage of craftsmanship in every bite. Our artisanal alfajores are handcrafted with passion, using traditional methods and premium ingredients.",
+    "exploreButton": "Explore Gift Packs",
+    "storyButton": "Our Story"
+  },
+  "packs": {
+    "featured": "Curated Gift Packs",
+    "classic": "Classic Pack",
+    "premium": "Premium Pack",
+    "special": "Special Edition"
+  },
+  "packDetails": {
+    "pieces": "pieces",
+    "price": "Price",
+    "ingredients": "Ingredients",
+    "weight": "Weight",
+    "flavors": "Flavors",
+    "available": "In Stock",
+    "outOfStock": "Out of Stock",
+    "mostPopular": "Most Popular",
+    "limitedEdition": "Limited Edition"
+  },
+  "cart": {
+    "addToCart": "Add to Cart",
+    "cartEmpty": "Your cart is empty",
+    "items": "items",
+    "total": "Total"
+  },
+  "brand": {
+    "heritage": "Our Heritage",
+    "story": "At Entremares, we believe in the power of tradition and the joy of giving. Each alfajor is a testament to generations of craftsmanship, made with love and the finest ingredients.",
+    "craftsmanship": "Discover the rich heritage of craftsmanship and authentic flavor in every alfajor."
+  },
+  "pages": {
+    "about": "About",
+    "aboutTitle": "Our Story",
+    "contact": "Contact",
+    "contactTitle": "Get in Touch",
+    "contactDescription": "Have questions? We'd love to hear from you."
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Thank you! We'll be in touch soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "brand": "Entremares",
+    "tagline": "Premium Artisanal Alfajores",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "email": "info@entremares.pt",
+    "copyright": "All rights reserved."
+  },
+  "errors": {
+    "notFound": "Pack not found",
+    "notFoundDescription": "Sorry, the pack you're looking for doesn't exist."
+  }
+}
