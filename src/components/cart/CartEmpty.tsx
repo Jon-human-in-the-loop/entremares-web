@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { ShoppingBag } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 
 export default function CartEmpty() {
   const t = useTranslations('cart')

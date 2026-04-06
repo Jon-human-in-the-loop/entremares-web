@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 
-export default async function Footer() {
+export default function Footer() {
   const t = useTranslations('footer')
   const currentYear = new Date().getFullYear()
 

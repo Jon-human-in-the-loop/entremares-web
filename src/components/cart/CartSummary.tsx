@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/lib/utils'
 import { Minus, Plus, Trash2 } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 
 export default function CartSummary() {
   const t = useTranslations('cart')

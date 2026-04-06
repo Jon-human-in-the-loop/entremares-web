@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname } from '@/i18n/routing'
+import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import CartIndicator from './cart/CartIndicator'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -14,17 +14,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navItems = [
-    { label: t('home'), href: '/' },
-    { label: t('giftPacks'), href: '/gift-packs' },
-    { label: t('about'), href: '/about' },
-    { label: t('contact'), href: '/contact' },
+    { label: t('home'), href: '/' as const },
+    { label: t('giftPacks'), href: '/gift-packs' as const },
+    { label: t('about'), href: '/about' as const },
+    { label: t('contact'), href: '/contact' as const },
   ]
 
   const isActive = (href: string) => {
-    // Remove locale prefix for comparison
-    const cleanPathname = pathname.replace(/^\/(en|pt|es)/, '')
-    const cleanHref = href === '/' ? '/' : href
-    return cleanPathname === cleanHref
+    return pathname === href || (href !== '/' && pathname.startsWith(href))
   }
 
   return (

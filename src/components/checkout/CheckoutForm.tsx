@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 import { Loader2, CheckCircle } from 'lucide-react'
 
 export default function CheckoutForm() {

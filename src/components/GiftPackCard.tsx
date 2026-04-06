@@ -1,6 +1,6 @@
 import { formatPrice } from '@/lib/utils'
 import type { GiftPack } from '@/types'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import AddToCartButton from './cart/AddToCartButton'
 
