@@ -3,8 +3,8 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 
 export function generateMetadata() {
   return {
-    title: `About Us | Entremares`,
-    description: 'Learn about Entremares heritage and artisanal craftsmanship.',
+    title: 'Our Story | Entremares',
+    description: 'Learn about Entremares heritage and handcrafted quality.',
   }
 }
 

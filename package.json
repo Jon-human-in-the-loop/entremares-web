@@ -1,7 +1,7 @@
 {
   "name": "entremares-web",
   "version": "0.1.0",
-  "description": "Premium artisanal alfajores gift packs - Entremares",
+  "description": "Premium handcrafted alfajores gift packs - Entremares",
   "private": true,
   "scripts": {
     "dev": "next dev",
