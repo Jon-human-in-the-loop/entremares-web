@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "giftPacks": "Packs de Regalo",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Entremares",
+    "subtitle": "Alfajores Artesanales Premium",
+    "description": "Descubre la riqueza de la tradición en cada bocado. Nuestros alfajores artesanales se hacen a mano con pasión, utilizando métodos tradicionales e ingredientes premium.",
+    "exploreButton": "Explorar Packs",
+    "storyButton": "Nuestra Historia"
+  },
+  "packs": {
+    "featured": "Packs Curados",
+    "classic": "Pack Clásico",
+    "premium": "Pack Premium",
+    "special": "Edición Especial"
+  },
+  "packDetails": {
+    "pieces": "piezas",
+    "price": "Precio",
+    "ingredients": "Ingredientes",
+    "weight": "Peso",
+    "flavors": "Sabores",
+    "available": "En Stock",
+    "outOfStock": "Agotado",
+    "mostPopular": "Más Popular",
+    "limitedEdition": "Edición Limitada"
+  },
+  "cart": {
+    "addToCart": "Añadir al Carrito",
+    "cartEmpty": "Tu carrito está vacío",
+    "items": "artículos",
+    "total": "Total"
+  },
+  "brand": {
+    "heritage": "Nuestra Historia",
+    "story": "En Entremares, creemos en el poder de la tradición y la alegría de regalar. Cada alfajor es un testimonio de generaciones de artesanía, hecho con amor y los mejores ingredientes.",
+    "craftsmanship": "Descubre la riqueza de la tradición y el sabor auténtico en cada alfajor."
+  },
+  "pages": {
+    "about": "Acerca de",
+    "aboutTitle": "Nuestra Historia",
+    "contact": "Contacto",
+    "contactTitle": "Ponte en Contacto",
+    "contactDescription": "¿Tienes preguntas? Nos encantaría saber de ti."
+  },
+  "form": {
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "¡Gracias! Nos pondremos en contacto pronto.",
+    "error": "Algo salió mal. Por favor, inténtalo de nuevo."
+  },
+  "footer": {
+    "brand": "Entremares",
+    "tagline": "Alfajores Artesanales Premium",
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Contacto",
+    "email": "info@entremares.pt",
+    "copyright": "Todos los derechos reservados."
+  },
+  "errors": {
+    "notFound": "Pack no encontrado",
+    "notFoundDescription": "Lo sentimos, el pack que buscas no existe."
+  }
+}
