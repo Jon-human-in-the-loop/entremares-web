@@ -15,6 +15,8 @@
   },
   "packs": {
     "featured": "Packs Curados",
+    "subtitle": "Nuestra Colección",
+    "description": "Descubre nuestra selección curada de packs de regalo artesanales, cada uno elaborado a mano con ingredientes premium.",
     "classic": "Pack Clásico",
     "premium": "Pack Premium",
     "special": "Edición Especial"

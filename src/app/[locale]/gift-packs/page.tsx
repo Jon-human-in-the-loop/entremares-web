@@ -13,13 +13,13 @@ export default function GiftPacksPage() {
       <section className="w-full px-6 py-20 md:py-28 bg-cream/50">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-4 animate-fade-in-up">
-            Our Collection
+            {t('packs.subtitle')}
           </p>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-dark-brown mb-6 animate-fade-in-up-delay-1">
             {t('packs.featured')}
           </h1>
           <p className="text-base md:text-lg text-text-secondary font-sans font-light max-w-xl mx-auto animate-fade-in-up-delay-2">
-            Discover our curated selection of artisanal gift packs, each handcrafted with premium ingredients.
+            {t('packs.description')}
           </p>
         </div>
       </section>
