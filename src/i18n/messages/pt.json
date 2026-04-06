@@ -48,20 +48,31 @@
     "checkout": "Finalizar Compra"
   },
   "checkout": {
-    "title": "Finalizar Compra",
-    "shippingDetails": "Dados de Envio",
+    "title": "Pagamento",
+    "shippingDetails": "Detalhes de Envio",
     "name": "Nome Completo",
-    "email": "Email",
-    "phone": "Telemóvel",
+    "email": "Endereço de Email",
+    "phone": "Número de Telemóvel",
     "address": "Morada",
     "city": "Cidade",
     "postalCode": "Código Postal",
-    "placeOrder": "Confirmar Pedido",
-    "processing": "A processar...",
     "orderSummary": "Resumo do Pedido",
+    "processing": "A processar...",
+    "placeOrder": "Finalizar Pedido",
     "orderConfirmed": "Pedido Confirmado!",
-    "orderConfirmedDescription": "Enviámos um email de confirmação com os detalhes do seu pedido.",
-    "backToHome": "Voltar ao Início"
+    "orderConfirmedDescription": "Obrigado pelo seu pedido. Enviámos um email de confirmação.",
+    "backToHome": "Voltar ao Início",
+    "payment": {
+      "title": "Método de Pagamento",
+      "mbway": "MB WAY",
+      "mbwayDesc": "Pague diretamente através da app MB WAY.",
+      "multibanco": "Multibanco",
+      "multibancoDesc": "Pagamento por Referência Multibanco.",
+      "pendingMbway": "Abra a sua app MB WAY para aprovar o pagamento.",
+      "multibancoEntity": "Entidade",
+      "multibancoReference": "Referência",
+      "multibancoValue": "Valor"
+    }
   },
   "brand": {
     "heritage": "A Nossa História",

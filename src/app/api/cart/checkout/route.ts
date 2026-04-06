@@ -34,6 +34,7 @@ export async function POST(request: Request) {
       id: orderId,
       createdAt: new Date().toISOString(),
       status: 'pending',
+      paymentMethod: body.paymentMethod || 'mbway',
       customer: {
         name: body.shipping.name.trim(),
         email: body.shipping.email.trim(),
@@ -51,6 +52,24 @@ export async function POST(request: Request) {
         quantity: item.quantity,
       })),
       total: body.total,
+    }
+
+    let paymentDetails = null
+
+    if (order.paymentMethod === 'mbway') {
+      // TODO: Call Ifthenpay/EuPago MB WAY API here
+      paymentDetails = {
+        method: 'mbway',
+        mbwayPhone: order.customer.phone,
+      }
+    } else if (order.paymentMethod === 'multibanco') {
+      // TODO: Call Ifthenpay/EuPago Multibanco API here
+      paymentDetails = {
+        method: 'multibanco',
+        entidade: '11223', // Mock entity
+        referencia: Math.floor(100000000 + Math.random() * 900000000).toString().replace(/(\d{3})(?=\d)/g, '$1 '), // Mock ref format 123 456 789
+        valor: order.total,
+      }
     }
 
     // Save order to filesystem
@@ -85,6 +104,7 @@ export async function POST(request: Request) {
       success: true,
       orderId,
       message: 'Order placed successfully',
+      paymentDetails,
     })
   } catch (error) {
     console.error('Checkout API error:', error)
