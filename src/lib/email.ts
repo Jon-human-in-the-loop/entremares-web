@@ -1,6 +1,13 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let _resend: Resend | null = null
+
+function getResend(): Resend {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return _resend
+}
 
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 const TO_EMAIL = process.env.TO_EMAIL || 'info@entremares.pt'
@@ -10,7 +17,7 @@ export async function sendContactEmail(data: {
   email: string
   message: string
 }) {
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: [TO_EMAIL],
     replyTo: data.email,
@@ -65,7 +72,7 @@ export async function sendOrderConfirmationEmail(data: {
     .join('')
 
   // Email to customer
-  const { error: customerError } = await resend.emails.send({
+  const { error: customerError } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: [data.customerEmail],
     subject: `[Entremares] Order Confirmation #${data.orderId}`,
@@ -118,7 +125,7 @@ export async function sendOrderConfirmationEmail(data: {
   }
 
   // Email to store owner
-  const { error: ownerError } = await resend.emails.send({
+  const { error: ownerError } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: [TO_EMAIL],
     subject: `[Entremares] New Order #${data.orderId} from ${data.customerName}`,
