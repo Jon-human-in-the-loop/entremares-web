@@ -10,6 +10,7 @@ import { Loader2, CheckCircle, ShieldCheck } from 'lucide-react'
 export default function CheckoutForm() {
   const t = useTranslations('checkout')
   const cartT = useTranslations('cart')
+  const tData = useTranslations('packsData')
   const { items, totalPrice, clear } = useCart()
   const router = useRouter()
 
@@ -218,17 +219,20 @@ export default function CheckoutForm() {
             {t('orderSummary')}
           </h3>
           <div className="space-y-4">
-            {items.map((item) => (
-              <div key={item.pack.id} className="flex justify-between text-sm">
-                <div>
-                  <span className="text-dark-brown font-sans font-medium text-sm">{item.pack.name}</span>
-                  <span className="text-text-muted ml-1.5">×{item.quantity}</span>
+            {items.map((item) => {
+              const packName = tData.has(`${item.pack.id}.name`) ? tData(`${item.pack.id}.name`) : item.pack.name
+              return (
+                <div key={item.pack.id} className="flex justify-between text-sm">
+                  <div>
+                    <span className="text-dark-brown font-sans font-medium text-sm">{packName}</span>
+                    <span className="text-text-muted ml-1.5">×{item.quantity}</span>
+                  </div>
+                  <span className="text-earth-brown font-sans font-medium">
+                    {formatPrice(item.pack.price * item.quantity)}
+                  </span>
                 </div>
-                <span className="text-earth-brown font-sans font-medium">
-                  {formatPrice(item.pack.price * item.quantity)}
-                </span>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <hr className="my-5 border-border-light" />
           <div className="flex justify-between items-center">

@@ -92,5 +92,59 @@
   "errors": {
     "notFound": "Pack no encontrado",
     "notFoundDescription": "Lo sentimos, el pack que buscas no existe."
+  },
+  "aboutPage": {
+    "title": "Nuestra Historia",
+    "subtitle": "Herencia, tradición y excelencia artesanal",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "En Entremares creemos que cada alfajor cuenta una historia. Estamos comprometidos a preservar las recetas tradicionales argentinas y llevarlas al mundo con orgullo. Cada pieza está hecha a mano con los mejores ingredientes y una inquebrantable atención al detalle."
+    },
+    "excellence": {
+      "title": "Excelencia Artesanal",
+      "description": "Nuestros artesanos utilizan técnicas honradas por el tiempo y transmitidas de generación en generación. Nos negamos a hacer concesiones en materia de calidad, y por eso utilizamos sólo la mejor mantequilla, dulce de leche puro y chocolate de primera en cada alfajor que creamos."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "authenticity": {
+        "title": "Autenticidad",
+        "desc": "Honrando las recetas y métodos tradicionales"
+      },
+      "quality": {
+        "title": "Calidad",
+        "desc": "Utilizando únicamente los mejores ingredientes premium"
+      },
+      "craftsmanship": {
+        "title": "Artesanía",
+        "desc": "Elaborado a mano con cuidado y atención al detalle"
+      }
+    }
+  },
+  "packsData": {
+    "classic-6": {
+      "name": "Pack Clásico",
+      "description": "Una selección deliciosa de nuestros sabores más icónicos. Perfecto para una primera experiencia.",
+      "longDescription": "El Pack Clásico es una introducción perfecta a los alfajores Entremares. Cada pieza está hecha a mano con ingredientes premium y técnicas tradicionales, reflejando siglos de herencia artesanal. Esta selección curada ofrece una experiencia completa de nuestros sabores más amados."
+    },
+    "premium-12": {
+      "name": "Pack Premium",
+      "description": "Nuestra selección más completa. Una experiencia artesanal de excelencia.",
+      "longDescription": "El Pack Premium es nuestro bestseller, ofreciendo una impresionante variedad de sabores premium. Con 12 piezas cuidadosamente seleccionadas, es el regalo perfecto para quienes aprecian la calidad y la diversidad. Ideal para compartir o para un regalo muy especial."
+    },
+    "special-edition": {
+      "name": "Edición Especial",
+      "description": "Sabores de edición limitada en empaque premium para ocasiones especiales.",
+      "longDescription": "La Edición Especial es el pináculo del arte de hacer alfajores. Con ingredientes raros y sabores innovadores, cada pieza es una obra maestra. Empaque premium con una presentación que refleja la calidad excepcional del producto. Disponible en cantidades limitadas."
+    }
+  },
+  "packFlavors": {
+    "dulce-leche": "Dulce de Leche",
+    "chocolate": "Chocolate",
+    "limon": "Limón",
+    "framboesa": "Frambuesa",
+    "cafe": "Café",
+    "pistacio": "Pistacho",
+    "flor-sal": "Flor de Sal",
+    "trufa": "Trufa Negra"
   }
 }

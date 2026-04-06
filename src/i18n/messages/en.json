@@ -92,5 +92,59 @@
   "errors": {
     "notFound": "Pack not found",
     "notFoundDescription": "Sorry, the pack you're looking for doesn't exist."
+  },
+  "aboutPage": {
+    "title": "Our Story",
+    "subtitle": "Heritage, tradition, and artisanal excellence",
+    "mission": {
+      "title": "Our Mission",
+      "description": "At Entremares, we believe that every alfajor tells a story. We are committed to preserving traditional Argentine recipes while bringing them to the world with pride. Each piece is handcrafted with the finest ingredients and unwavering attention to detail."
+    },
+    "excellence": {
+      "title": "Artisanal Excellence",
+      "description": "Our artisans use time-honored techniques passed down through generations. We refuse to compromise on quality, which is why we use only the finest butter, pure dulce de leche, and premium chocolate in every alfajor we create."
+    },
+    "values": {
+      "title": "Our Values",
+      "authenticity": {
+        "title": "Authenticity",
+        "desc": "Honoring traditional recipes and methods"
+      },
+      "quality": {
+        "title": "Quality",
+        "desc": "Using only the finest, most premium ingredients"
+      },
+      "craftsmanship": {
+        "title": "Craftsmanship",
+        "desc": "Handcrafted with care and attention to detail"
+      }
+    }
+  },
+  "packsData": {
+    "classic-6": {
+      "name": "Classic Pack",
+      "description": "A delicious selection of our most iconic flavors. Perfect for a first experience.",
+      "longDescription": "The Classic Pack is a perfect introduction to Entremares alfajores. Each piece is handmade with premium ingredients and traditional techniques, reflecting centuries of artisanal heritage. This curated selection offers a complete experience of our most loved flavors."
+    },
+    "premium-12": {
+      "name": "Premium Pack",
+      "description": "Our most complete selection. An artisanal experience of excellence.",
+      "longDescription": "The Premium Pack is our bestseller, offering an impressive variety of premium flavors. With 12 carefully selected pieces, it's the perfect gift for those who appreciate quality and diversity. Ideal for sharing or for a very special gift."
+    },
+    "special-edition": {
+      "name": "Special Edition",
+      "description": "Limited edition flavors in premium packaging for special occasions.",
+      "longDescription": "The Special Edition is the pinnacle of the art of making alfajores. With rare ingredients and innovative flavors, each piece is a masterpiece. Premium packaging with a presentation that reflects the exceptional quality of the product. Available in limited quantities."
+    }
+  },
+  "packFlavors": {
+    "dulce-leche": "Dulce de Leche",
+    "chocolate": "Chocolate",
+    "limon": "Lemon",
+    "framboesa": "Raspberry",
+    "cafe": "Coffee",
+    "pistacio": "Pistachio",
+    "flor-sal": "Sea Salt",
+    "trufa": "Black Truffle"
   }
 }

@@ -1,74 +1,73 @@
 import { useTranslations } from 'next-intl'
-import type { Metadata } from 'next'
+import { unstable_setRequestLocale } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'About Us | Entremares',
-  description: 'Learn about Entremares heritage and artisanal craftsmanship.',
+export function generateMetadata() {
+  return {
+    title: `About Us | Entremares`,
+    description: 'Learn about Entremares heritage and artisanal craftsmanship.',
+  }
 }
 
-export default function AboutPage() {
-  const t = useTranslations('pages')
+export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale)
+  const t = useTranslations('aboutPage')
 
   return (
     <div className="py-12 px-4">
       {/* Hero Banner */}
       <section className="w-full px-4 py-16 md:py-24 bg-gradient-to-r from-honey to-warm-gold">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-4xl text-center animate-fade-in-up">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-dark-brown mb-4">
-            {t('aboutTitle')}
+            {t('title')}
           </h1>
-          <p className="text-lg text-earth-brown">
-            Heritage, tradition, and artisanal excellence
+          <p className="text-lg text-earth-brown font-sans">
+            {t('subtitle')}
           </p>
         </div>
       </section>
 
       {/* Content */}
       <section className="w-full px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl space-y-12">
-          <div>
+        <div className="mx-auto max-w-4xl space-y-16">
+          <div className="animate-fade-in-up-delay-1">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              Our Mission
+              {t('mission.title')}
             </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              At Entremares, we believe that every alfajor tells a story. We are committed to preserving
-              traditional Argentine recipes while bringing them to the world with pride. Each piece is
-              handcrafted with the finest ingredients and unwavering attention to detail.
+            <p className="text-gray-700 leading-relaxed text-lg font-sans font-light">
+              {t('mission.description')}
             </p>
           </div>
 
-          <div>
+          <div className="animate-fade-in-up-delay-2">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              Artisanal Excellence
+              {t('excellence.title')}
             </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              Our artisans use time-honored techniques passed down through generations. We refuse to
-              compromise on quality, which is why we use only the finest butter, pure dulce de leche,
-              and premium chocolate in every alfajor we create.
+            <p className="text-gray-700 leading-relaxed text-lg font-sans font-light">
+              {t('excellence.description')}
             </p>
           </div>
 
-          <div>
+          <div className="animate-fade-in-up-delay-3">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              Our Values
+              {t('values.title')}
             </h2>
-            <ul className="space-y-4 text-gray-700">
-              <li className="flex gap-4">
-                <span className="text-warm-gold text-2xl">•</span>
+            <ul className="space-y-6 text-gray-700 font-sans font-light">
+              <li className="flex gap-4 items-start">
+                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
                 <div>
-                  <strong>Authenticity:</strong> Honoring traditional recipes and methods
+                  <strong className="text-dark-brown font-semibold">{t('values.authenticity.title')}:</strong> {t('values.authenticity.desc')}
                 </div>
               </li>
-              <li className="flex gap-4">
-                <span className="text-warm-gold text-2xl">•</span>
+              <li className="flex gap-4 items-start">
+                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
                 <div>
-                  <strong>Quality:</strong> Using only the finest, most premium ingredients
+                  <strong className="text-dark-brown font-semibold">{t('values.quality.title')}:</strong> {t('values.quality.desc')}
                 </div>
               </li>
-              <li className="flex gap-4">
-                <span className="text-warm-gold text-2xl">•</span>
+              <li className="flex gap-4 items-start">
+                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
                 <div>
-                  <strong>Craftsmanship:</strong> Handcrafted with care and attention to detail
+                  <strong className="text-dark-brown font-semibold">{t('values.craftsmanship.title')}:</strong> {t('values.craftsmanship.desc')}
                 </div>
               </li>
             </ul>
