@@ -32,8 +32,33 @@
   "cart": {
     "addToCart": "Add to Cart",
     "cartEmpty": "Your cart is empty",
+    "emptyDescription": "Browse our curated gift packs and add something special.",
+    "cartTitle": "Shopping Cart",
     "items": "items",
-    "total": "Total"
+    "total": "Total",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "pieces": "pieces",
+    "continueShopping": "Continue Shopping",
+    "checkout": "Proceed to Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shippingDetails": "Shipping Details",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "placeOrder": "Place Order",
+    "processing": "Processing...",
+    "orderSummary": "Order Summary",
+    "orderConfirmed": "Order Confirmed!",
+    "orderConfirmedDescription": "We've sent a confirmation email with your order details.",
+    "backToHome": "Back to Home"
   },
   "brand": {
     "heritage": "Our Heritage",

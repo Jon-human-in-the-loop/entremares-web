@@ -32,8 +32,33 @@
   "cart": {
     "addToCart": "Añadir al Carrito",
     "cartEmpty": "Tu carrito está vacío",
+    "emptyDescription": "Explora nuestros packs de regalo curados y añade algo especial.",
+    "cartTitle": "Carrito de Compras",
     "items": "artículos",
-    "total": "Total"
+    "total": "Total",
+    "product": "Producto",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "pieces": "piezas",
+    "continueShopping": "Seguir Comprando",
+    "checkout": "Finalizar Compra"
+  },
+  "checkout": {
+    "title": "Finalizar Compra",
+    "shippingDetails": "Datos de Envío",
+    "name": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "postalCode": "Código Postal",
+    "placeOrder": "Confirmar Pedido",
+    "processing": "Procesando...",
+    "orderSummary": "Resumen del Pedido",
+    "orderConfirmed": "¡Pedido Confirmado!",
+    "orderConfirmedDescription": "Hemos enviado un email de confirmación con los detalles de tu pedido.",
+    "backToHome": "Volver al Inicio"
   },
   "brand": {
     "heritage": "Nuestra Historia",
