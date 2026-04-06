@@ -2,8 +2,9 @@
   "nav": {
     "home": "Início",
     "giftPacks": "Packs de Presente",
-    "about": "Sobre",
-    "contact": "Contacto"
+    "about": "A Nossa História",
+    "contact": "Contacto",
+    "announcement": "✦ Alfajores Premium Artesanais — Feitos com Amor ✦"
   },
   "hero": {
     "title": "Entremares",
@@ -74,8 +75,11 @@
   },
   "form": {
     "name": "Nome",
+    "namePlaceholder": "O seu nome",
     "email": "Email",
+    "emailPlaceholder": "o-seu@email.com",
     "message": "Mensagem",
+    "messagePlaceholder": "Conte-nos de que precisa...",
     "send": "Enviar",
     "sending": "Enviando...",
     "success": "Obrigado! Entraremos em contacto em breve.",

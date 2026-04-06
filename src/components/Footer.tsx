@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 
 export default function Footer() {
   const t = useTranslations('footer')
+  const tNav = useTranslations('nav')
   const currentYear = new Date().getFullYear()
 
   return (
@@ -28,17 +29,17 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/" className="text-sm font-sans text-cream/60 hover:text-warm-gold transition-colors duration-300">
-                  Home
+                  {tNav('home')}
                 </Link>
               </li>
               <li>
                 <Link href="/gift-packs" className="text-sm font-sans text-cream/60 hover:text-warm-gold transition-colors duration-300">
-                  Gift Packs
+                  {tNav('giftPacks')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-sm font-sans text-cream/60 hover:text-warm-gold transition-colors duration-300">
-                  About
+                  {tNav('about')}
                 </Link>
               </li>
             </ul>

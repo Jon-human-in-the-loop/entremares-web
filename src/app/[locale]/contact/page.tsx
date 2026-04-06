@@ -97,7 +97,7 @@ export default function ContactPage() {
                 onChange={handleChange}
                 required
                 className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
-                placeholder="Your name"
+                placeholder={t('form.namePlaceholder')}
               />
             </div>
 
@@ -113,7 +113,7 @@ export default function ContactPage() {
                 onChange={handleChange}
                 required
                 className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
-                placeholder="your@email.com"
+                placeholder={t('form.emailPlaceholder')}
               />
             </div>
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
                 required
                 rows={6}
                 className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted resize-none transition-all duration-300"
-                placeholder="Tell us about your needs..."
+                placeholder={t('form.messagePlaceholder')}
               />
             </div>
 

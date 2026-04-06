@@ -40,7 +40,7 @@ export default function Header() {
       {/* Announcement Bar */}
       <div className="bg-dark-brown text-cream text-center py-2.5 px-4">
         <p className="text-xs font-sans font-medium tracking-widest uppercase">
-          ✦ Premium Artisanal Alfajores — Handcrafted with Love ✦
+          {t('announcement')}
         </p>
       </div>
 

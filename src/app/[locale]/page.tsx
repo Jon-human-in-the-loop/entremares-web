@@ -46,7 +46,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <div className="text-center mb-16">
               <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-4">
-                Our Collection
+                {packsT('featured')}
               </p>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown">
                 {packsT('featured')}
@@ -69,7 +69,7 @@ export default function Home() {
         <section className="w-full px-6 section-breathe bg-warm-white">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-4">
-              Our Story
+              {brandT('heritage')}
             </p>
             <h2 className="mb-10 text-4xl md:text-5xl font-serif font-bold text-dark-brown">
               {brandT('heritage')}

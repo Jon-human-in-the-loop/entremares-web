@@ -2,8 +2,9 @@
   "nav": {
     "home": "Home",
     "giftPacks": "Gift Packs",
-    "about": "About",
-    "contact": "Contact"
+    "about": "Our Story",
+    "contact": "Contact",
+    "announcement": "✦ Premium Artisanal Alfajores — Handcrafted with Love ✦"
   },
   "hero": {
     "title": "Entremares",
@@ -74,8 +75,11 @@
   },
   "form": {
     "name": "Name",
+    "namePlaceholder": "Your name",
     "email": "Email",
+    "emailPlaceholder": "your@email.com",
     "message": "Message",
+    "messagePlaceholder": "Tell us about your needs...",
     "send": "Send",
     "sending": "Sending...",
     "success": "Thank you! We'll be in touch soon.",
