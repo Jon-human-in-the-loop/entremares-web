@@ -78,10 +78,9 @@ export async function sendOrderConfirmationEmail(data: {
     subject: `[Entremares] Order Confirmation #${data.orderId}`,
     html: `
       <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-        <h1 style="color: #3D2B1F; font-size: 28px; margin-bottom: 8px;">Entremares</h1>
-        <p style="color: #8B6914; font-size: 14px; margin-bottom: 30px;">Premium Artisanal Alfajores</p>
-        
-        <h2 style="color: #3D2B1F;">Order Confirmation</h2>
+        <h1 style="color: #4A3C31; margin-bottom: 5px; font-size: 24px;">ENTREMARES</h1>
+        <p style="color: #8B6914; font-size: 14px; margin-bottom: 30px;">Premium Handcrafted Alfajores</p>
+        <h2 style="color: #4A3C31; font-size: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Order Confirmation</h2>
         <p>Thank you, <strong>${data.customerName}</strong>! Your order has been received.</p>
         <p style="color: #666;">Order ID: <strong>#${data.orderId}</strong></p>
         
@@ -114,8 +113,7 @@ export async function sendOrderConfirmationEmail(data: {
           ${data.shippingAddress.city}, ${data.shippingAddress.postalCode}
         </p>
         
-        <hr style="border: 1px solid #D4A574; margin: 30px 0;" />
-        <p style="color: #999; font-size: 12px;">Entremares - Premium Artisanal Alfajores | info@entremares.pt</p>
+        <p style="color: #999; font-size: 12px; text-align: center; margin-top: 30px;">Entremares - Premium Handcrafted Alfajores | info@entremares.pt</p>
       </div>
     `,
   })

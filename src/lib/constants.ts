@@ -2,7 +2,7 @@ import type { GiftPack } from '@/types'
 
 export const BRAND = {
   name: 'Entremares',
-  tagline: 'Premium Artisanal Alfajores',
+  tagline: 'Premium Handcrafted Alfajores',
   baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://entremares.pt',
 } as const
 

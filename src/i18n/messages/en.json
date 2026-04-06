@@ -4,11 +4,11 @@
     "giftPacks": "Gift Packs",
     "about": "Our Story",
     "contact": "Contact",
-    "announcement": "✦ Premium Artisanal Alfajores — Handcrafted with Love ✦"
+    "announcement": "✦ Premium Handcrafted Alfajores — Made with Love ✦"
   },
   "hero": {
     "title": "Entremares",
-    "subtitle": "Premium Artisanal Alfajores",
+    "subtitle": "Premium Handcrafted Alfajores",
     "description": "Discover the rich heritage of craftsmanship in every bite. Our artisanal alfajores are handcrafted with passion, using traditional methods and premium ingredients.",
     "exploreButton": "Explore Gift Packs",
     "storyButton": "Our Story"
@@ -100,7 +100,7 @@
   },
   "footer": {
     "brand": "Entremares",
-    "tagline": "Premium Artisanal Alfajores",
+    "tagline": "Premium Handcrafted Alfajores",
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "email": "info@entremares.pt",

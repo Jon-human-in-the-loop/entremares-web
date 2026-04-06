@@ -9,14 +9,14 @@ import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 
 export const metadata: Metadata = {
-  title: 'Entremares - Premium Artisanal Alfajores',
-  description: 'Discover premium artisanal alfajores gift packs with a rich heritage of craftsmanship.',
+  title: 'Entremares - Premium Handcrafted Alfajores',
+  description: 'Discover premium handcrafted alfajores gift packs with a rich heritage of craftsmanship.',
   icons: {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Entremares - Premium Artisanal Alfajores',
-    description: 'Discover premium artisanal alfajores gift packs with a rich heritage of craftsmanship.',
+    title: 'Entremares - Premium Handcrafted Alfajores',
+    description: 'Discover premium handcrafted alfajores gift packs with a rich heritage of craftsmanship.',
     type: 'website',
   },
 }
