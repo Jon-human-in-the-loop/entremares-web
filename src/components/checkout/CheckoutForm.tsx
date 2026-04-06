@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/lib/utils'
 import { useRouter } from '@/i18n/routing'
-import { Loader2, CheckCircle } from 'lucide-react'
+import { Loader2, CheckCircle, ShieldCheck } from 'lucide-react'
 
 export default function CheckoutForm() {
   const t = useTranslations('checkout')
@@ -68,20 +68,20 @@ export default function CheckoutForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex flex-col items-center justify-center py-16 px-4">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-          <CheckCircle size={40} className="text-green-600" />
+      <div className="flex flex-col items-center justify-center py-16 px-4 animate-fade-in-up">
+        <div className="w-20 h-20 bg-sage/15 rounded-full flex items-center justify-center mb-6">
+          <CheckCircle size={40} className="text-sage" />
         </div>
         <h2 className="text-3xl font-serif font-bold text-dark-brown mb-3">
           {t('orderConfirmed')}
         </h2>
-        <p className="text-gray-600 mb-2">{t('orderConfirmedDescription')}</p>
-        <p className="text-earth-brown font-semibold text-lg mb-8">
+        <p className="text-sm text-text-muted font-sans mb-2">{t('orderConfirmedDescription')}</p>
+        <p className="text-earth-brown font-serif font-semibold text-lg mb-10">
           Order #{orderId}
         </p>
         <button
           onClick={() => router.push('/')}
-          className="px-8 py-3 bg-earth-brown text-cream font-semibold rounded-sm hover:bg-dark-brown transition-colors"
+          className="btn-pill btn-primary text-sm"
         >
           {t('backToHome')}
         </button>
@@ -90,23 +90,22 @@ export default function CheckoutForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 animate-fade-in-up">
       {/* Shipping Form */}
       <div className="lg:col-span-2">
-        <h2 className="text-2xl font-serif font-bold text-dark-brown mb-6">
+        <h2 className="text-2xl font-serif font-bold text-dark-brown mb-8">
           {t('shippingDetails')}
         </h2>
 
         {status === 'error' && errorMessage && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-sm">
-            <p className="text-red-600 text-sm">{errorMessage}</p>
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-red-600 font-sans text-sm">{errorMessage}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
           <div>
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+            <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
               {t('name')} *
             </label>
             <input
@@ -115,13 +114,12 @@ export default function CheckoutForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+              className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
             />
           </div>
 
-          {/* Email */}
           <div>
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+            <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
               {t('email')} *
             </label>
             <input
@@ -130,13 +128,12 @@ export default function CheckoutForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+              className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
             />
           </div>
 
-          {/* Phone */}
           <div>
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+            <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
               {t('phone')} *
             </label>
             <input
@@ -145,13 +142,12 @@ export default function CheckoutForm() {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+              className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
             />
           </div>
 
-          {/* Address */}
           <div>
-            <label className="block text-sm font-semibold text-dark-brown mb-2">
+            <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
               {t('address')} *
             </label>
             <input
@@ -160,14 +156,13 @@ export default function CheckoutForm() {
               value={formData.address}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+              className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
             />
           </div>
 
-          {/* City + Postal Code */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-dark-brown mb-2">
+              <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
                 {t('city')} *
               </label>
               <input
@@ -176,11 +171,11 @@ export default function CheckoutForm() {
                 value={formData.city}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+                className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark-brown mb-2">
+              <label className="block text-xs font-sans font-semibold text-dark-brown mb-2 uppercase tracking-wider">
                 {t('postalCode')} *
               </label>
               <input
@@ -189,52 +184,56 @@ export default function CheckoutForm() {
                 value={formData.postalCode}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-warm-gold focus:ring-1 focus:ring-warm-gold transition-colors"
+                className="w-full px-5 py-3.5 bg-warm-white border border-border rounded-lg font-sans text-sm text-dark-brown placeholder:text-text-muted transition-all duration-300"
               />
             </div>
           </div>
 
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={status === 'submitting' || items.length === 0}
-            className="w-full px-8 py-4 bg-earth-brown text-cream font-semibold rounded-sm hover:bg-dark-brown transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
-          >
-            {status === 'submitting' ? (
-              <>
-                <Loader2 size={20} className="animate-spin" />
-                {t('processing')}
-              </>
-            ) : (
-              t('placeOrder')
-            )}
-          </button>
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={status === 'submitting' || items.length === 0}
+              className="w-full btn-pill btn-primary text-sm flex items-center justify-center gap-2 !py-4 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
+            >
+              {status === 'submitting' ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  {t('processing')}
+                </>
+              ) : (
+                <>
+                  <ShieldCheck size={16} />
+                  {t('placeOrder')}
+                </>
+              )}
+            </button>
+          </div>
         </form>
       </div>
 
       {/* Order Summary Sidebar */}
       <div className="lg:col-span-1">
-        <div className="bg-cream rounded-sm p-6 sticky top-24">
-          <h3 className="text-lg font-serif font-bold text-dark-brown mb-4">
+        <div className="bg-white rounded-xl border border-border-light p-7 sticky top-32">
+          <h3 className="text-sm font-sans font-semibold text-dark-brown mb-6 uppercase tracking-wider">
             {t('orderSummary')}
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {items.map((item) => (
               <div key={item.pack.id} className="flex justify-between text-sm">
                 <div>
-                  <span className="text-dark-brown font-medium">{item.pack.name}</span>
-                  <span className="text-gray-500 ml-1">×{item.quantity}</span>
+                  <span className="text-dark-brown font-sans font-medium text-sm">{item.pack.name}</span>
+                  <span className="text-text-muted ml-1.5">×{item.quantity}</span>
                 </div>
-                <span className="text-earth-brown font-medium">
+                <span className="text-earth-brown font-sans font-medium">
                   {formatPrice(item.pack.price * item.quantity)}
                 </span>
               </div>
             ))}
           </div>
-          <hr className="my-4 border-honey" />
+          <hr className="my-5 border-border-light" />
           <div className="flex justify-between items-center">
             <span className="font-serif font-bold text-dark-brown">{cartT('total')}</span>
-            <span className="text-xl font-bold text-warm-gold">{formatPrice(totalPrice)}</span>
+            <span className="text-xl font-serif font-bold text-warm-gold">{formatPrice(totalPrice)}</span>
           </div>
         </div>
       </div>

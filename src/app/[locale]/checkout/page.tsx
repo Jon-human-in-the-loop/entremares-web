@@ -9,26 +9,24 @@ export default function CheckoutPage() {
   const t = useTranslations('checkout')
   const { items } = useCart()
 
-  if (items.length === 0) {
-    return (
-      <div className="py-12 px-4">
-        <section className="w-full px-4 py-8 md:py-12">
-          <div className="mx-auto max-w-4xl">
-            <CartEmpty />
-          </div>
-        </section>
-      </div>
-    )
-  }
-
   return (
-    <div className="py-12 px-4">
-      <section className="w-full px-4 py-8 md:py-12">
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown mb-10 text-center">
+    <div>
+      {/* Hero */}
+      <section className="w-full px-6 py-16 md:py-20 bg-cream/50">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-4">
+            Secure Checkout
+          </p>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown">
             {t('title')}
           </h1>
-          <CheckoutForm />
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="w-full px-6 section-breathe">
+        <div className="mx-auto max-w-5xl">
+          {items.length === 0 ? <CartEmpty /> : <CheckoutForm />}
         </div>
       </section>
     </div>

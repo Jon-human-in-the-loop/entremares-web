@@ -9,32 +9,29 @@ export default function CartPage() {
   const t = useTranslations('cart')
   const { items } = useCart()
 
-  if (items.length === 0) {
-    return (
-      <div className="py-12 px-4">
-        <section className="w-full px-4 py-8 md:py-12">
-          <div className="mx-auto max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown mb-8 text-center">
-              {t('cartTitle')}
-            </h1>
-            <CartEmpty />
-          </div>
-        </section>
-      </div>
-    )
-  }
-
   return (
-    <div className="py-12 px-4">
-      <section className="w-full px-4 py-8 md:py-12">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown mb-8 text-center">
+    <div>
+      {/* Hero */}
+      <section className="w-full px-6 py-16 md:py-20 bg-cream/50">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-4">
+            Shopping
+          </p>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown">
             {t('cartTitle')}
           </h1>
-          <p className="text-center text-gray-500 mb-10">
-            {items.length} {t('items')}
-          </p>
-          <CartSummary />
+          {items.length > 0 && (
+            <p className="text-sm text-text-muted font-sans mt-3">
+              {items.length} {t('items')}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="w-full px-6 section-breathe">
+        <div className="mx-auto max-w-4xl">
+          {items.length === 0 ? <CartEmpty /> : <CartSummary />}
         </div>
       </section>
     </div>

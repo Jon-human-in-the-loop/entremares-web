@@ -13,23 +13,22 @@ export default function LanguageSwitcher() {
   }
 
   const locales = [
-    { code: 'en' as const, label: 'EN', title: 'English' },
-    { code: 'pt' as const, label: 'PT', title: 'Português' },
-    { code: 'es' as const, label: 'ES', title: 'Español' },
+    { code: 'en' as const, label: 'EN' },
+    { code: 'pt' as const, label: 'PT' },
+    { code: 'es' as const, label: 'ES' },
   ]
 
   return (
-    <div className="flex gap-1">
+    <div className="flex bg-cream/80 rounded-pill p-1 gap-0.5">
       {locales.map((loc) => (
         <button
           key={loc.code}
           onClick={() => handleLanguageChange(loc.code)}
-          className={`px-3 py-2 rounded-sm text-sm font-medium transition-colors ${
+          className={`px-3 py-1.5 rounded-pill text-xs font-sans font-semibold tracking-wider uppercase transition-all duration-300 ${
             currentLocale === loc.code
-              ? 'bg-earth-brown text-cream'
-              : 'hover:bg-honey text-earth-brown'
+              ? 'bg-dark-brown text-cream shadow-sm'
+              : 'text-earth-brown hover:text-dark-brown hover:bg-honey/40'
           }`}
-          title={loc.title}
         >
           {loc.label}
         </button>
