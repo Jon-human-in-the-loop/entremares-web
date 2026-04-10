@@ -92,7 +92,6 @@ export default function DeconstructedAlfajor() {
                 fill
                 quality={100}
                 className="object-cover opacity-95"
-                style={{ mixBlendMode: 'multiply' }}
                 sizes="100vw"
               />
             </div>
@@ -104,7 +103,6 @@ export default function DeconstructedAlfajor() {
                 fill
                 quality={100}
                 className="object-cover opacity-95"
-                style={{ mixBlendMode: 'multiply' }}
                 sizes="100vw"
               />
             </div>
