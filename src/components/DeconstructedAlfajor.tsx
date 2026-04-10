@@ -223,7 +223,7 @@ export default function DeconstructedAlfajor() {
   const layers = [
     {
       color: 'transparent',
-      yOffset: -120,
+      yOffset: -400,
       imageHint: 'Capa superior',
       imagePath: '/images/hero/alfajor-capa-superior.webp',
     },
@@ -235,7 +235,7 @@ export default function DeconstructedAlfajor() {
     },
     {
       color: 'transparent',
-      yOffset: 120,
+      yOffset: 450,
       imageHint: 'Capa inferior',
       imagePath: '/images/hero/alfajor-capa-inferior-con-relleno.webp',
     },
@@ -245,77 +245,76 @@ export default function DeconstructedAlfajor() {
     <section
       ref={sectionRef}
       id="alfajor-deconstruido"
-      className="deconstructed-section"
+      className="relative w-full h-[300vh]"
     >
-      {/* ── Background gradient ── */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: 'linear-gradient(180deg, #E9DCC9 0%, #C4A882 30%, #7A5A3A 65%, #2D1B0F 100%)',
-        }}
-      />
-
-      {/* ── Particles ── */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-        {particles.map((p) => (
-          <ParticleElement key={p.id} p={p} mouseX={mousePos.x} mouseY={mousePos.y} />
-        ))}
-      </div>
-
-      {/* ── Brand text behind alfajor ── */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-        <h2 className="brand-watermark">
-          ENTRE MARES
-        </h2>
-      </div>
-
-      {/* ── Alfajor 3D construct ── */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen py-20" style={{ perspective: '1200px' }}>
-        <motion.div
-          className="alfajor-construct"
+      <div className="sticky top-0 w-full h-screen overflow-hidden bg-transparent">
+        {/* ── Background gradient ── */}
+        <div
+          className="absolute inset-0 z-0"
           style={{
-            rotateX,
-            rotateY,
-            transformStyle: 'preserve-3d',
+            background: 'linear-gradient(180deg, #E9DCC9 0%, #C4A882 30%, #7A5A3A 65%, #2D1B0F 100%)',
           }}
-        >
-          {/* Layers */}
-          {layers.map((layer, idx) => (
-            <AlfajorLayer
-              key={idx.toString()}
-              scrollProgress={scrollYProgress}
-              {...layer}
-            />
-          ))}
+        />
 
-          {/* Tooltips */}
-          {TOOLTIPS.map((tt) => (
-            <TooltipMarker key={tt.id} tooltip={tt} />
+        {/* ── Particles ── */}
+        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+          {particles.map((p) => (
+            <ParticleElement key={p.id} p={p} mouseX={mousePos.x} mouseY={mousePos.y} />
           ))}
-        </motion.div>
+        </div>
 
-        {/* Title below */}
-        <motion.div
-          className="mt-16 text-center z-30 relative"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-3xl md:text-5xl font-montserrat font-bold text-white tracking-tight mb-4">
-            PISTACHE INTENSO
-          </h3>
-          <p className="text-white/60 text-sm md:text-base font-lato tracking-[0.25em] uppercase">
-            Un bocado de tradición, un toque de autor
+        {/* ── Brand text behind alfajor ── */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <h2 className="brand-watermark">
+            ENTRE MARES
+          </h2>
+        </div>
+
+        {/* ── Alfajor 3D construct ── */}
+        <div className="relative z-20 flex flex-col items-center justify-center h-full w-full" style={{ perspective: '1200px' }}>
+          <motion.div
+            className="alfajor-construct"
+            style={{
+              rotateX,
+              rotateY,
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            {/* Layers */}
+            {layers.map((layer, idx) => (
+              <AlfajorLayer
+                key={idx.toString()}
+                scrollProgress={scrollYProgress}
+                {...layer}
+              />
+            ))}
+
+            {/* Tooltips */}
+            {TOOLTIPS.map((tt) => (
+              <TooltipMarker key={tt.id} tooltip={tt} />
+            ))}
+          </motion.div>
+
+          {/* Title below (fades in as user scrolls) */}
+          <motion.div
+            className="absolute bottom-[20%] text-center z-30 w-full px-4"
+            style={{ opacity: useTransform(scrollYProgress, [0.3, 0.6], [0, 1]) }}
+          >
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-montserrat font-bold text-white tracking-tight mb-4 drop-shadow-xl">
+              PISTACHE INTENSO
+            </h3>
+            <p className="text-white/80 text-sm md:text-base font-lato tracking-[0.25em] uppercase drop-shadow-md">
+              Un bocado de tradición, un toque de autor
+            </p>
+          </motion.div>
+        </div>
+
+        {/* ── Bottom tagline ── */}
+        <div className="absolute bottom-8 left-0 right-0 z-30 text-center px-8">
+          <p className="text-white/50 text-xs md:text-sm font-lato tracking-[0.2em] uppercase max-w-3xl mx-auto leading-relaxed">
+            ENTRE MARES: DONDE LA PASIÓN POR EL DULCE DE LECHE SE ENCUENTRA CON LA INNOVACIÓN ARTESANAL
           </p>
-        </motion.div>
-      </div>
-
-      {/* ── Bottom tagline ── */}
-      <div className="absolute bottom-8 left-0 right-0 z-30 text-center px-8">
-        <p className="text-white/50 text-xs md:text-sm font-lato tracking-[0.2em] uppercase max-w-3xl mx-auto leading-relaxed">
-          ENTRE MARES: DONDE LA PASIÓN POR EL DULCE DE LECHE SE ENCUENTRA CON LA INNOVACIÓN ARTESANAL
-        </p>
+        </div>
       </div>
     </section>
   )
