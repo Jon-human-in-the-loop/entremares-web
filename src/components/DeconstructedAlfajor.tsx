@@ -30,7 +30,7 @@ function generateParticles(count: number): Particle[] {
     rotation: Math.random() * 360,
     speed: 0.2 + Math.random() * 0.4,
     opacity: 0.5 + Math.random() * 0.4,
-    type: (['pistachio-berry', 'pistachio-green', 'crumb'] as const)[Math.floor(Math.random() * 3)],
+    type: (['pistachio-berry', 'pistachio-green', 'crumb'] as const)[Math.floor(Math.random() * 3)] ?? 'pistachio-berry',
     driftX: (Math.random() - 0.5) * 30,
     driftY: (Math.random() - 0.5) * 30,
   }))
