@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback, useMemo } from 'react'
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import Image from 'next/image'
 
 /* ──────────────────────────────────────────────
@@ -133,25 +133,23 @@ export default function DeconstructedAlfajor() {
             }}
             className="relative w-[90vw] h-[90vw] max-w-[380px] max-h-[380px] md:w-[450px] md:h-[450px] md:max-w-none md:max-h-none lg:w-[550px] lg:h-[550px]"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentFrame}
-                initial={{ opacity: 0.85 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0.85 }}
-                transition={{ duration: 0.08 }}
-                className="absolute inset-0"
+            {/* All 4 frames always mounted — only opacity changes to avoid glitch */}
+            {frameImages.map((src, i) => (
+              <div
+                key={src}
+                className="absolute inset-0 transition-opacity duration-150 ease-in-out"
+                style={{ opacity: i === currentFrame ? 1 : 0 }}
               >
                 <Image
-                  src={frameImages[currentFrame] as string}
-                  alt={`Alfajor de pistacho vista ${currentFrame + 1}`}
+                  src={src}
+                  alt={`Alfajor de pistacho vista ${i + 1}`}
                   fill
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)]"
                   priority
                   sizes="(max-width: 768px) 90vw, (max-width: 1024px) 450px, 550px"
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
           </motion.div>
         </div>
 
