@@ -65,7 +65,7 @@ export default function HeroSection() {
         <div className="pt-24 md:pt-32" />
 
         {/* Center: brand watermark */}
-        <div className="flex-1 flex flex-col items-center justify-start md:justify-center px-8 pt-16 md:pt-0">
+        <div className="flex-1 flex flex-col items-center justify-center px-8">
           <motion.h1
             className="hero-brand-title"
             initial={{ opacity: 0, y: 30 }}
