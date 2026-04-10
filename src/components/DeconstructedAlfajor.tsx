@@ -88,13 +88,12 @@ export default function DeconstructedAlfajor() {
             }}
             className="relative w-full h-full max-w-[1400px] max-h-[1400px]"
           >
-            {/* El mix-blend-mode: screen hace desaparecer el fondo negro de la imagen de referencia */}
             <Image
-              src="/images/particles/explosion.jpg"
+              src="/images/particles/explosion.png"
               alt="Frutos secos flotando"
               fill
               quality={100}
-              className="object-cover md:object-contain mix-blend-screen opacity-90"
+              className="object-cover md:object-contain opacity-90 drop-shadow-2xl"
               sizes="100vw"
             />
           </motion.div>
