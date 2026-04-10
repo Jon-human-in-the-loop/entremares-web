@@ -288,16 +288,17 @@ select:focus {
 /* Brand watermark title */
 .hero-brand-title {
   font-family: var(--font-montserrat, 'Montserrat', sans-serif);
-  font-size: clamp(3rem, 12vw, 10rem);
+  font-size: clamp(2rem, 10vw, 10rem);
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.15);
   text-align: center;
-  line-height: 1;
+  line-height: 1.1;
   pointer-events: none;
   user-select: none;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* Brand subtitle */
@@ -310,6 +311,9 @@ select:focus {
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
   margin-top: 1rem;
+  padding: 0 1rem;
+  line-height: 1.6;
+  white-space: normal;
 }
 
 /* Bottom tagline */

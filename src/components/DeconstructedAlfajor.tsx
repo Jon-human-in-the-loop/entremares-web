@@ -103,7 +103,7 @@ export default function DeconstructedAlfajor() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.025] z-0">
           <h2
             className="font-montserrat font-bold text-white tracking-tighter uppercase select-none"
-            style={{ fontSize: 'clamp(2.5rem, 11vw, 9rem)' }}
+            style={{ fontSize: 'clamp(2rem, 11vw, 9rem)', whiteSpace: 'normal', wordBreak: 'break-word', textAlign: 'center', lineHeight: '1.2' }}
           >
             ENTREMARES
           </h2>
