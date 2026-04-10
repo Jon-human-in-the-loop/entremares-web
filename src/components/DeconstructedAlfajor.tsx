@@ -280,9 +280,9 @@ export default function DeconstructedAlfajor() {
           }}
         >
           {/* Layers */}
-          {layers.map((layer) => (
+          {layers.map((layer, idx) => (
             <AlfajorLayer
-              key={layer.label}
+              key={idx.toString()}
               scrollProgress={scrollYProgress}
               {...layer}
             />
