@@ -2,14 +2,6 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Link from 'next/link'
-
-const navItems = [
-  { label: 'MENÚ', href: '/gift-packs' },
-  { label: 'SOBRE NOSOTROS', href: '/about' },
-  { label: 'CONTACTO', href: '/contact' },
-]
-
 import Image from 'next/image'
 
 export default function HeroSection() {
