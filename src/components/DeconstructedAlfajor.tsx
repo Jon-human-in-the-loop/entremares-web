@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import Image from 'next/image'
 
 /* ──────────────────────────────────────────────
-   DATA & TIPOS
+   PARTÍCULAS — Ahora son imágenes PNG reales
    ────────────────────────────────────────────── */
 
 interface Particle {
@@ -15,61 +15,40 @@ interface Particle {
   size: number
   rotation: number
   speed: number
-  opacity: number
-  type: 'pistachio-berry' | 'pistachio-green' | 'crumb'
+  imageSrc: string
   driftX: number
   driftY: number
+  flipX: boolean
 }
+
+const PARTICLE_IMAGES = [
+  '/images/particles/pistachio-1.png',
+  '/images/particles/pistachio-2.png',
+  '/images/particles/crumbs.png',
+]
 
 function generateParticles(count: number): Particle[] {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: 6 + Math.random() * 20,
+    size: 20 + Math.random() * 45, // 20px to 65px
     rotation: Math.random() * 360,
-    speed: 0.2 + Math.random() * 0.4,
-    opacity: 0.5 + Math.random() * 0.4,
-    type: (['pistachio-berry', 'pistachio-green', 'crumb'] as const)[Math.floor(Math.random() * 3)] ?? 'pistachio-berry',
-    driftX: (Math.random() - 0.5) * 30,
-    driftY: (Math.random() - 0.5) * 30,
+    speed: 0.15 + Math.random() * 0.35,
+    imageSrc: PARTICLE_IMAGES[Math.floor(Math.random() * PARTICLE_IMAGES.length)] ?? PARTICLE_IMAGES[0],
+    driftX: (Math.random() - 0.5) * 25,
+    driftY: (Math.random() - 0.5) * 25,
+    flipX: Math.random() > 0.5,
   }))
 }
 
 /* ──────────────────────────────────────────────
-   PARTÍCULA REALISTA (Pistacho / Migas)
-   Inspirado en la nueva referencia visual
+   PARTÍCULA INDIVIDUAL — Imagen real flotante
    ────────────────────────────────────────────── */
 
 function ParticleElement({ p, mouseX, mouseY }: { p: Particle; mouseX: number; mouseY: number }) {
-  const dx = (mouseX - 50) * 0.08 * p.speed
-  const dy = (mouseY - 50) * 0.08 * p.speed
-
-  // Colors from reference
-  const PISTACHO_GREEN = '#98C044'
-  const PISTACHO_SKIN = '#6D3F5B'
-  const CRUMB_BROWN = '#3D2B1F'
-
-  const getStyle = () => {
-    if (p.type === 'pistachio-berry') {
-      return {
-        background: `radial-gradient(circle at 30% 30%, ${PISTACHO_GREEN} 40%, ${PISTACHO_SKIN} 100%)`,
-        borderRadius: '40% 60% 70% 30% / 40% 40% 60% 60%',
-      }
-    }
-    if (p.type === 'pistachio-green') {
-      return {
-        background: PISTACHO_GREEN,
-        borderRadius: '50% 50% 40% 60%',
-        boxShadow: `inset -2px -2px 0px rgba(0,0,0,0.1)`,
-      }
-    }
-    return {
-      background: CRUMB_BROWN,
-      borderRadius: '2px', // tiny specs
-      transform: `rotate(${p.rotation}deg)`,
-    }
-  }
+  const dx = (mouseX - 50) * 0.06 * p.speed
+  const dy = (mouseY - 50) * 0.06 * p.speed
 
   return (
     <motion.div
@@ -77,54 +56,63 @@ function ParticleElement({ p, mouseX, mouseY }: { p: Particle; mouseX: number; m
       style={{
         left: `${p.x}%`,
         top: `${p.y}%`,
-        width: p.type === 'crumb' ? p.size * 0.3 : p.size,
-        height: p.type === 'crumb' ? p.size * 0.3 : p.size * 1.2,
-        opacity: p.opacity,
-        ...getStyle(),
+        width: p.size,
+        height: p.size,
+        scaleX: p.flipX ? -1 : 1,
       }}
       animate={{
         x: [p.driftX, -p.driftX, p.driftX],
         y: [p.driftY, -p.driftY, p.driftY],
-        translateX: -dx * 15,
-        translateY: -dy * 15,
-        rotate: p.rotation + dx * 20,
+        translateX: -dx * 18,
+        translateY: -dy * 18,
+        rotate: [p.rotation, p.rotation + 15, p.rotation - 10, p.rotation],
       }}
       transition={{
-        x: { duration: 10 + p.speed * 5, repeat: Infinity, ease: 'easeInOut' },
-        y: { duration: 12 + p.speed * 4, repeat: Infinity, ease: 'easeInOut' },
-        translateX: { type: 'spring', stiffness: 35, damping: 25 },
-        translateY: { type: 'spring', stiffness: 35, damping: 25 },
+        x: { duration: 12 + p.speed * 6, repeat: Infinity, ease: 'easeInOut' },
+        y: { duration: 14 + p.speed * 5, repeat: Infinity, ease: 'easeInOut' },
+        rotate: { duration: 16 + p.speed * 4, repeat: Infinity, ease: 'easeInOut' },
+        translateX: { type: 'spring', stiffness: 30, damping: 25 },
+        translateY: { type: 'spring', stiffness: 30, damping: 25 },
       }}
-    />
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={p.imageSrc}
+        alt=""
+        width={p.size}
+        height={p.size}
+        className="w-full h-full object-contain"
+        style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
+        loading="lazy"
+      />
+    </motion.div>
   )
 }
 
 /* ──────────────────────────────────────────────
-   COMPONENTE PRINCIPAL: InteractiveAlfajor
+   COMPONENTE PRINCIPAL
    ────────────────────────────────────────────── */
 
 export default function DeconstructedAlfajor() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 })
-  const [particles] = useState(() => generateParticles(55))
+  const [particles] = useState(() => generateParticles(28))
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
   })
 
-  // Secuencia de imágenes subidas por el usuario
+  // 4 imágenes del alfajor en diferentes posiciones/ángulos
   const frameImages = useMemo(() => [
     '/images/hero/alfajor-1.png',
     '/images/hero/2.png',
     '/images/hero/alfajor-3.png',
     '/images/hero/alfajor-4.png',
-    '/images/hero/alfajor-5.png',
   ], [])
 
-  // Mapeo de scroll al índice de la imagen (0 a 4)
-  // Dejamos el último tramo (0.8 a 1.0) para el efecto de "alfajor cortado" que falta
-  const frameIndex = useTransform(scrollYProgress, [0, 0.75], [0, 4])
+  // Mapeo de scroll al índice de imagen
+  const frameIndex = useTransform(scrollYProgress, [0, 0.8], [0, 3])
   const [currentFrame, setCurrentFrame] = useState(0)
 
   useEffect(() => {
@@ -135,13 +123,16 @@ export default function DeconstructedAlfajor() {
     return unsubscribe
   }, [frameIndex, frameImages.length])
 
-  // Parallax y rotación sutil
-  const mouseRotateX = useSpring((mousePos.y - 50) * -0.15, { stiffness: 60, damping: 20 })
-  const mouseRotateY = useSpring((mousePos.x - 50) * 0.15, { stiffness: 60, damping: 20 })
-  
-  // Escala imponente al final
-  const scale = useTransform(scrollYProgress, [0.7, 0.9], [1, 1.4])
-  const opacity = useTransform(scrollYProgress, [0.95, 1], [1, 0.8])
+  // 3D mouse tracking
+  const mouseRotateX = useSpring((mousePos.y - 50) * -0.12, { stiffness: 50, damping: 20 })
+  const mouseRotateY = useSpring((mousePos.x - 50) * 0.12, { stiffness: 50, damping: 20 })
+
+  // Scale up as user scrolls deeper
+  const scale = useTransform(scrollYProgress, [0, 0.5, 0.8], [0.9, 1, 1.15])
+
+  // Title fade in
+  const titleOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1])
+  const titleY = useTransform(scrollYProgress, [0.25, 0.5], [40, 0])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const x = (e.clientX / window.innerWidth) * 100
@@ -157,82 +148,97 @@ export default function DeconstructedAlfajor() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[500vh] bg-[#1a0f08]"
+      className="relative w-full"
+      style={{ height: '500vh' }}
     >
       <div className="sticky top-0 w-full h-screen overflow-hidden">
-        {/* Cinematic Backdrop */}
-        <div className="absolute inset-0 bg-[#140a05]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2D1B0F]/20 via-transparent to-[#1a0f08]" />
-        
-        {/* Floating Pistachios & Crumbs */}
+        {/* ── Dark Cinematic Background ── */}
+        <div className="absolute inset-0 bg-[#140a04]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(45,27,15,0.6) 0%, rgba(20,10,4,1) 70%)',
+          }}
+        />
+
+        {/* ── Floating Pistachios & Crumbs (Real images) ── */}
         <div className="absolute inset-0 z-10 overflow-hidden">
           {particles.map((p) => (
             <ParticleElement key={p.id} p={p} mouseX={mousePos.x} mouseY={mousePos.y} />
           ))}
         </div>
 
-        {/* Brand Background Text (Reduced) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02] z-0">
-          <h2 className="text-[12vw] font-bold font-montserrat text-white tracking-tighter uppercase select-none">
+        {/* ── Brand Watermark ── */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.025] z-0">
+          <h2
+            className="font-montserrat font-bold text-white tracking-tighter uppercase select-none"
+            style={{ fontSize: 'clamp(2.5rem, 11vw, 9rem)' }}
+          >
             ENTREMARES
           </h2>
         </div>
 
-        {/* ── IMAGE SEQUENCE (Movement) ── */}
-        <div className="relative z-20 w-full h-full flex items-center justify-center p-12" style={{ perspective: '1500px' }}>
+        {/* ── Alfajor Image Sequence ── */}
+        <div
+          className="relative z-20 w-full h-full flex items-center justify-center"
+          style={{ perspective: '1500px' }}
+        >
           <motion.div
             style={{
               scale,
-              opacity,
               rotateX: mouseRotateX,
               rotateY: mouseRotateY,
               transformStyle: 'preserve-3d',
             }}
-            className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px]"
+            className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentFrame}
-                initial={{ opacity: 0.8 }}
+                initial={{ opacity: 0.85 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0.8 }}
-                transition={{ duration: 0.1 }}
+                exit={{ opacity: 0.85 }}
+                transition={{ duration: 0.08 }}
                 className="absolute inset-0"
               >
                 <Image
                   src={frameImages[currentFrame] as string}
-                  alt={`Alfajor ${currentFrame + 1}`}
+                  alt={`Alfajor de pistacho vista ${currentFrame + 1}`}
                   fill
-                  className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
+                  className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)]"
                   priority
+                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 450px, 550px"
                 />
               </motion.div>
             </AnimatePresence>
           </motion.div>
-
-          {/* Title Overlay */}
-          <motion.div
-            className="absolute bottom-[10%] text-center z-30"
-            style={{ 
-              opacity: useTransform(scrollYProgress, [0.3, 0.6], [0, 1]),
-              y: useTransform(scrollYProgress, [0.3, 0.6], [40, 0])
-            }}
-          >
-            <h3 className="text-4xl md:text-8xl font-montserrat font-bold text-white mb-4 tracking-tighter">
-              PISTACHE INTENSO
-            </h3>
-            <p className="text-pistacho text-lg md:text-2xl font-lato tracking-[0.4em] uppercase opacity-80">
-              Artesanía en Movimiento
-            </p>
-          </motion.div>
         </div>
 
-        {/* Fallback note for the "Cut Half" image */}
-        {scrollYProgress.get() > 0.9 && (
-          <div className="absolute bottom-4 right-4 text-white/20 text-[10px] uppercase font-lato">
-            Esperando imagen: alfajor-cortado.png
-          </div>
-        )}
+        {/* ── Title (fades in on scroll) ── */}
+        <motion.div
+          className="absolute bottom-[12%] left-0 right-0 z-30 text-center px-8"
+          style={{ opacity: titleOpacity, y: titleY }}
+        >
+          <h3
+            className="font-montserrat font-bold text-white tracking-tight mb-3"
+            style={{ fontSize: 'clamp(1.8rem, 5vw, 4.5rem)', textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}
+          >
+            PISTACHE INTENSO
+          </h3>
+          <p
+            className="font-lato tracking-[0.3em] uppercase"
+            style={{ color: '#93C572', textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+          >
+            Artesanía en Movimiento
+          </p>
+        </motion.div>
+
+        {/* ── Bottom tagline ── */}
+        <div className="absolute bottom-5 left-0 right-0 z-30 text-center px-6">
+          <p className="text-white/30 text-[10px] md:text-xs font-lato tracking-[0.2em] uppercase max-w-2xl mx-auto">
+            ENTRE MARES · ALFAJORES PREMIUM ARTESANALES
+          </p>
+        </div>
       </div>
     </section>
   )
