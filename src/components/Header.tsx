@@ -72,6 +72,12 @@ export default function Header() {
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
+          <Link
+            href="/gift-packs"
+            className="hidden md:flex items-center justify-center font-sans font-bold text-[10px] tracking-[0.15em] uppercase bg-dark-brown text-cream px-5 py-2.5 rounded-full hover:bg-earth-brown transition-all duration-300 shadow-sm"
+          >
+            {t('buyNow')}
+          </Link>
           <LanguageSwitcher />
           <CartIndicator />
 

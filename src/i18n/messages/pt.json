@@ -1,9 +1,10 @@
 {
   "nav": {
-    "home": "Início",
-    "giftPacks": "Os Nossos Alfajores",
-    "about": "A Nossa História",
-    "contact": "Contacto",
+    "home": "INÍCIO",
+    "giftPacks": "MENU",
+    "about": "SOBRE NÓS",
+    "contact": "CONTACTO",
+    "buyNow": "COMPRAR AGORA",
     "announcement": "✦ Alfajores Premium Artesanais — Feitos com Amor ✦"
   },
   "hero": {

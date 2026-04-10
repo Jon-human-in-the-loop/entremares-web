@@ -1,9 +1,10 @@
 {
   "nav": {
-    "home": "Home",
-    "giftPacks": "Our Alfajores",
-    "about": "Our Story",
-    "contact": "Contact",
+    "home": "HOME",
+    "giftPacks": "MENU",
+    "about": "ABOUT US",
+    "contact": "CONTACT",
+    "buyNow": "SHOP NOW",
     "announcement": "✦ Premium Handcrafted Alfajores — Made with Love ✦"
   },
   "hero": {
