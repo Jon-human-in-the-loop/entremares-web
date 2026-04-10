@@ -35,7 +35,7 @@ function generateParticles(count: number): Particle[] {
     size: 20 + Math.random() * 45, // 20px to 65px
     rotation: Math.random() * 360,
     speed: 0.15 + Math.random() * 0.35,
-    imageSrc: PARTICLE_IMAGES[Math.floor(Math.random() * PARTICLE_IMAGES.length)] ?? PARTICLE_IMAGES[0],
+    imageSrc: PARTICLE_IMAGES[Math.floor(Math.random() * PARTICLE_IMAGES.length)] ?? '/images/particles/pistachio-1.png',
     driftX: (Math.random() - 0.5) * 25,
     driftY: (Math.random() - 0.5) * 25,
     flipX: Math.random() > 0.5,
