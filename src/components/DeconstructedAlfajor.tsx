@@ -41,12 +41,11 @@ export default function DeconstructedAlfajor() {
   const mouseRotateX = useSpring((mousePos.y - 50) * -0.12, { stiffness: 50, damping: 20 })
   const mouseRotateY = useSpring((mousePos.x - 50) * 0.12, { stiffness: 50, damping: 20 })
 
-  // Escala del alfajor — zoom potente hacia la pantalla
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.85], [0.6, 1, 1.5])
+  // Escala del alfajor — zoom suave desde tamaño completo
+  const scale = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 1.15, 1.45])
 
-  // Rotación + zoom del anillo de nueces/pistachos
-  const explosionRotation = useTransform(scrollYProgress, [0, 1], [0, 140])
-  const explosionScale = useTransform(scrollYProgress, [0, 0.4, 0.85], [0.5, 1, 1.7])
+  // Solo zoom del anillo de nueces/pistachos (sin rotación)
+  const explosionScale = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 1.15, 1.55])
 
   // Title fade in
   const titleOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1])
@@ -79,22 +78,31 @@ export default function DeconstructedAlfajor() {
           }}
         />
 
-        {/* ── Explosion Ring (Nueces & Pistachos) ── */}
+        {/* ── Explosion Ring (Nueces & Pistachos) — solo zoom, sin rotación ── */}
         <div className="absolute inset-0 z-10 overflow-hidden flex items-center justify-center pointer-events-none">
           <motion.div
             style={{
-              rotate: explosionRotation,
               scale: explosionScale,
             }}
-            className="relative w-[150vmax] h-[150vmax] max-w-[2000px] max-h-[2000px]"
+            className="relative w-full h-full"
           >
+            {/* Mobile: vertical explosion */}
             <Image
-              src="/images/particles/explosion.png"
+              src="/images/particles/explosion-vertical.png"
               alt="Frutos secos flotando"
               fill
               quality={100}
-              className="object-contain md:object-cover opacity-90 drop-shadow-2xl"
-              sizes="150vmax"
+              className="object-cover opacity-90 drop-shadow-2xl md:hidden"
+              sizes="100vw"
+            />
+            {/* Desktop: horizontal explosion */}
+            <Image
+              src="/images/particles/explosion-horizontal.png"
+              alt="Frutos secos flotando"
+              fill
+              quality={100}
+              className="object-cover opacity-90 drop-shadow-2xl hidden md:block"
+              sizes="100vw"
             />
           </motion.div>
         </div>

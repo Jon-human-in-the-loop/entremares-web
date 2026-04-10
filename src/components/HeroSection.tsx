@@ -19,28 +19,28 @@ export default function HeroSection() {
       id="hero"
       className="relative w-full h-screen min-h-[600px] overflow-hidden"
     >
-      {/* Background Hero Image — bg color sampled from the image so gaps are invisible */}
+      {/* Background Hero Image — art direction: vertical for mobile, horizontal for desktop */}
       <motion.div
         className="absolute inset-0 z-0"
         style={{ y, backgroundColor: '#bfaa96' }}
       >
-        {/* Blurred fill layer: covers any empty areas on mobile with matching tones */}
-        <div className="absolute inset-0">
+        {/* Mobile: vertical image */}
+        <div className="absolute inset-0 md:hidden">
           <Image
-            src="/images/hero/hero-variedade.webp"
-            alt=""
-            fill
-            className="object-cover blur-3xl opacity-60 scale-125"
-            aria-hidden="true"
-          />
-        </div>
-        {/* Sharp image on top */}
-        <div className="relative w-full h-full">
-          <Image
-            src="/images/hero/hero-variedade.webp"
+            src="/images/hero/hero-variedade-vertical.jpg"
             alt="Variedad de alfajores Entre Mares"
             fill
-            className="object-contain object-center"
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+        {/* Desktop: horizontal image */}
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/images/hero/hero-variedade-horizontal.webp"
+            alt="Variedad de alfajores Entre Mares"
+            fill
+            className="object-cover object-center"
             priority
           />
         </div>
