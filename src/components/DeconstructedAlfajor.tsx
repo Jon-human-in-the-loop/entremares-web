@@ -79,31 +79,35 @@ export default function DeconstructedAlfajor() {
         />
 
         {/* ── Explosion Ring (Nueces & Pistachos) — solo zoom, sin rotación ── */}
-        <div className="absolute inset-0 z-10 overflow-hidden flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
           <motion.div
-            style={{
-              scale: explosionScale,
-            }}
-            className="relative w-full h-full"
+            style={{ scale: explosionScale }}
+            className="absolute inset-0"
           >
-            {/* Mobile: vertical explosion */}
-            <Image
-              src="/images/particles/explosion-vertical.png"
-              alt="Frutos secos flotando"
-              fill
-              quality={100}
-              className="object-cover opacity-90 drop-shadow-2xl md:hidden"
-              sizes="100vw"
-            />
+            {/* Mobile: vertical explosion — cada imagen tiene su propio contenedor */}
+            <div className="absolute inset-0 md:hidden">
+              <Image
+                src="/images/particles/explosion-vertical.png"
+                alt="Frutos secos flotando"
+                fill
+                quality={100}
+                className="object-cover opacity-95"
+                style={{ mixBlendMode: 'multiply' }}
+                sizes="100vw"
+              />
+            </div>
             {/* Desktop: horizontal explosion */}
-            <Image
-              src="/images/particles/explosion-horizontal.png"
-              alt="Frutos secos flotando"
-              fill
-              quality={100}
-              className="object-cover opacity-90 drop-shadow-2xl hidden md:block"
-              sizes="100vw"
-            />
+            <div className="absolute inset-0 hidden md:block">
+              <Image
+                src="/images/particles/explosion-horizontal.png"
+                alt="Frutos secos flotando"
+                fill
+                quality={100}
+                className="object-cover opacity-95"
+                style={{ mixBlendMode: 'multiply' }}
+                sizes="100vw"
+              />
+            </div>
           </motion.div>
         </div>
 

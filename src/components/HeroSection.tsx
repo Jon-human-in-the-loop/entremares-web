@@ -31,6 +31,7 @@ export default function HeroSection() {
             alt="Variedad de alfajores Entre Mares"
             fill
             className="object-cover object-center"
+            sizes="100vw"
             priority
           />
         </div>
@@ -41,6 +42,7 @@ export default function HeroSection() {
             alt="Variedad de alfajores Entre Mares"
             fill
             className="object-cover object-center"
+            sizes="100vw"
             priority
           />
         </div>
