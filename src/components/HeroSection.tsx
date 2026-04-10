@@ -21,15 +21,24 @@ export default function HeroSection() {
     >
       {/* Background Hero Image */}
       <motion.div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-[#cdbfb1]"
         style={{ y }}
       >
+        {/* Blurred background for mobile to hide the empty areas when using object-contain */}
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/images/hero/hero-variedade.webp"
+            alt=""
+            fill
+            className="object-cover blur-2xl opacity-80 scale-110"
+          />
+        </div>
         <div className="w-full h-full relative">
           <Image
             src="/images/hero/hero-variedade.webp"
             alt="Variedad de alfajores Entre Mares"
             fill
-            className="object-cover object-center"
+            className="max-md:object-contain max-md:scale-[1.4] md:object-cover object-center"
             priority
           />
         </div>
