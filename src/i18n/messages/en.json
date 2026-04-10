@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "giftPacks": "Gift Packs",
+    "giftPacks": "Our Alfajores",
     "about": "Our Story",
     "contact": "Contact",
     "announcement": "✦ Premium Handcrafted Alfajores — Made with Love ✦"
@@ -10,16 +10,16 @@
     "title": "Entremares",
     "subtitle": "Premium Handcrafted Alfajores",
     "description": "Discover the rich heritage of craftsmanship in every bite. Our handcrafted alfajores are made with passion, using traditional methods and premium ingredients.",
-    "exploreButton": "Explore Gift Packs",
+    "exploreButton": "Explore Alfajores",
     "storyButton": "Our Story"
   },
   "packs": {
-    "featured": "Curated Gift Packs",
+    "featured": "Our Alfajores",
     "subtitle": "Our Collection",
-    "description": "Discover our curated selection of handcrafted gift packs, each made with premium ingredients.",
-    "classic": "Classic Pack",
-    "premium": "Premium Pack",
-    "special": "Special Edition"
+    "description": "Discover our curated selection of handcrafted alfajores, each made with premium ingredients.",
+    "classic": "Pistache Intenso",
+    "premium": "Vinho do Porto",
+    "special": "Chocolate Intenso"
   },
   "packDetails": {
     "pieces": "pieces",
@@ -35,7 +35,7 @@
   "cart": {
     "addToCart": "Add to Cart",
     "cartEmpty": "Your cart is empty",
-    "emptyDescription": "Browse our curated gift packs and add something special.",
+    "emptyDescription": "Browse our handcrafted alfajores and add something special.",
     "cartTitle": "Shopping Cart",
     "items": "items",
     "total": "Total",
@@ -107,8 +107,8 @@
     "copyright": "All rights reserved."
   },
   "errors": {
-    "notFound": "Pack not found",
-    "notFoundDescription": "Sorry, the pack you're looking for doesn't exist."
+    "notFound": "Alfajor not found",
+    "notFoundDescription": "Sorry, the alfajor you're looking for doesn't exist."
   },
   "aboutPage": {
     "title": "Our Story",
@@ -138,20 +138,30 @@
     }
   },
   "packsData": {
-    "classic-6": {
-      "name": "Classic Pack",
-      "description": "The perfect introduction to our classics.",
-      "longDescription": "The Classic Pack is a perfect introduction to Entremares alfajores. Each piece is handmade with premium ingredients and traditional techniques, reflecting centuries of handcrafted heritage. This curated selection offers a complete experience of our most loved flavors."
+    "pistache-intenso": {
+      "name": "Pistache Intenso",
+      "description": "Handcrafted alfajor filled with rich pistachio.",
+      "longDescription": "The 'Pistache Intenso' offers a vibrant experience, combining our signature dough with a rich cream and pistachio praline, coated in white chocolate."
     },
-    "premium-12": {
-      "name": "Entremares Premium Pack",
-      "description": "Our most complete selection. A handcrafted experience of excellence.",
-      "longDescription": "For the true connoisseur, the Premium Pack delivers our finest selection. Perfect for special occasions or as a distinguished corporate gift. With 12 carefully selected pieces, it's the perfect gift for those who appreciate quality and diversity. Ideal for sharing or for a very special gift."
+    "chocolate-blanco-nuez": {
+      "name": "Chocolate Blanco con Nuez",
+      "description": "Tender alfajor dipped in premium white chocolate with walnut pieces.",
+      "longDescription": "A perfect fusion of smoothness and crunchy texture. Our white chocolate alfajor with selected walnut pieces is a reimagined classic for the most demanding palates."
     },
-    "special-edition": {
-      "name": "Special Edition",
-      "description": "Limited edition flavors in premium packaging for special occasions.",
-      "longDescription": "The Special Edition is the pinnacle of the art of making alfajores. With rare ingredients and innovative flavors, each piece is a masterpiece. Premium packaging with a presentation that reflects the exceptional quality of the product. Available in limited quantities."
+    "vinho-do-porto": {
+      "name": "Vinho do Porto",
+      "description": "A refined experience with notes of Port wine.",
+      "longDescription": "A tribute to our Iberian roots and local influence. The filling is gently infused with prestigious Port Wine, enveloped in dark chocolate and offering a unique aromatic finish."
+    },
+    "caramelo-salado": {
+      "name": "Caramelo Salado",
+      "description": "The perfect balance between sweetness and hints of sea salt.",
+      "longDescription": "Discover the addictive contrast of our Salted Caramel. The classic dulce de leche fused with premium sea salt flakes creates an unparalleled flavor explosion."
+    },
+    "chocolate-intenso": {
+      "name": "Chocolate Intenso",
+      "description": "For true lovers of pure cocoa.",
+      "longDescription": "A dark alfajor designed for cocoa purists. With a triple dip of 80% Belgian chocolate and a deep ganache filling, this piece is pure intensity."
     }
   },
   "packFlavors": {
