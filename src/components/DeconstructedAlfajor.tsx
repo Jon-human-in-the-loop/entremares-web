@@ -41,12 +41,12 @@ export default function DeconstructedAlfajor() {
   const mouseRotateX = useSpring((mousePos.y - 50) * -0.12, { stiffness: 50, damping: 20 })
   const mouseRotateY = useSpring((mousePos.x - 50) * 0.12, { stiffness: 50, damping: 20 })
 
-  // Escala del alfajor
-  const scale = useTransform(scrollYProgress, [0, 0.5, 0.8], [0.9, 1, 1.15])
+  // Escala del alfajor — zoom potente hacia la pantalla
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.85], [0.6, 1, 1.5])
 
-  // Rotación del anillo de nueces/pistachos basado en el scroll
-  const explosionRotation = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const explosionScale = useTransform(scrollYProgress, [0, 1], [1, 1.3])
+  // Rotación + zoom del anillo de nueces/pistachos
+  const explosionRotation = useTransform(scrollYProgress, [0, 1], [0, 140])
+  const explosionScale = useTransform(scrollYProgress, [0, 0.4, 0.85], [0.5, 1, 1.7])
 
   // Title fade in
   const titleOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1])

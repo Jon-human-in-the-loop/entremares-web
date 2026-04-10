@@ -17,28 +17,30 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative w-full h-screen min-h-[600px] overflow-hidden bg-warm-white"
+      className="relative w-full h-screen min-h-[600px] overflow-hidden"
     >
-      {/* Background Hero Image */}
+      {/* Background Hero Image — bg color sampled from the image so gaps are invisible */}
       <motion.div
-        className="absolute inset-0 z-0 bg-[#cdbfb1]"
-        style={{ y }}
+        className="absolute inset-0 z-0"
+        style={{ y, backgroundColor: '#bfaa96' }}
       >
-        {/* Blurred background for mobile to hide the empty areas when using object-contain */}
-        <div className="absolute inset-0 md:hidden">
+        {/* Blurred fill layer: covers any empty areas on mobile with matching tones */}
+        <div className="absolute inset-0">
           <Image
             src="/images/hero/hero-variedade.webp"
             alt=""
             fill
-            className="object-cover blur-2xl opacity-80 scale-110"
+            className="object-cover blur-3xl opacity-60 scale-125"
+            aria-hidden="true"
           />
         </div>
-        <div className="w-full h-full relative">
+        {/* Sharp image on top */}
+        <div className="relative w-full h-full">
           <Image
             src="/images/hero/hero-variedade.webp"
             alt="Variedad de alfajores Entre Mares"
             fill
-            className="max-md:object-contain max-md:scale-[1.4] md:object-cover object-center"
+            className="object-contain object-center"
             priority
           />
         </div>
