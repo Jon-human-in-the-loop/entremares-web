@@ -86,15 +86,15 @@ export default function DeconstructedAlfajor() {
               rotate: explosionRotation,
               scale: explosionScale,
             }}
-            className="relative w-full h-full max-w-[1400px] max-h-[1400px]"
+            className="relative w-[150vmax] h-[150vmax] max-w-[2000px] max-h-[2000px]"
           >
             <Image
               src="/images/particles/explosion.png"
               alt="Frutos secos flotando"
               fill
               quality={100}
-              className="object-cover md:object-contain opacity-90 drop-shadow-2xl"
-              sizes="100vw"
+              className="object-contain md:object-cover opacity-90 drop-shadow-2xl"
+              sizes="150vmax"
             />
           </motion.div>
         </div>
@@ -121,7 +121,7 @@ export default function DeconstructedAlfajor() {
               rotateY: mouseRotateY,
               transformStyle: 'preserve-3d',
             }}
-            className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px]"
+            className="relative w-[90vw] h-[90vw] max-w-[380px] max-h-[380px] md:w-[450px] md:h-[450px] md:max-w-none md:max-h-none lg:w-[550px] lg:h-[550px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -138,7 +138,7 @@ export default function DeconstructedAlfajor() {
                   fill
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)]"
                   priority
-                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 450px, 550px"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1024px) 450px, 550px"
                 />
               </motion.div>
             </AnimatePresence>
