@@ -54,29 +54,8 @@ export default function HeroSection() {
         className="relative z-20 flex flex-col h-full"
         style={{ opacity }}
       >
-        {/* Top bar: nav + CTA */}
-        <div className="flex items-center justify-between px-8 md:px-16 pt-8">
-          {/* Nav items */}
-          <nav className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="hero-nav-link"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <a
-            href="/gift-packs"
-            className="hero-cta-btn"
-          >
-            COMPRAR AHORA
-          </a>
-        </div>
+        {/* Top spacing to account for the global header */}
+        <div className="pt-24 md:pt-32" />
 
         {/* Center: brand watermark */}
         <div className="flex-1 flex flex-col items-center justify-center px-8">
