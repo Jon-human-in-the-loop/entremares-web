@@ -46,8 +46,8 @@ export default function Header() {
 
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
         {/* Logo */}
-        <Link href="/" className="font-serif font-bold text-2xl md:text-3xl text-dark-brown tracking-tight hover:text-earth-brown transition-colors">
-          E N T R E M A R E S
+        <Link href="/" className="font-serif font-bold text-lg md:text-3xl text-dark-brown tracking-[0.1em] md:tracking-[0.2em] hover:text-earth-brown transition-colors">
+          ENTREMARES
         </Link>
 
         {/* Desktop Navigation */}
