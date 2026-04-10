@@ -2,44 +2,18 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import { GIFT_PACKS } from '@/lib/constants'
 import GiftPackCard from '@/components/GiftPackCard'
+import HeroSection from '@/components/HeroSection'
+import DeconstructedAlfajor from '@/components/DeconstructedAlfajor'
 
 export default function Home() {
-  const t = useTranslations('hero')
   const packsT = useTranslations('packs')
   const brandT = useTranslations('brand')
 
   return (
     <>
       <main className="w-full">
-        {/* Hero Section — Full-width, breathable */}
-        <section className="w-full px-6 section-breathe bg-warm-white">
-          <div className="mx-auto max-w-5xl text-center">
-            <div className="animate-fade-in-up">
-              <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-warm-gold mb-6">
-                {t('subtitle')}
-              </p>
-              <h1 className="mb-8 text-5xl md:text-6xl lg:text-8xl font-serif font-bold text-dark-brown leading-[1.05] tracking-tight">
-                {t('title')}
-              </h1>
-            </div>
-            <div className="animate-fade-in-up-delay-1">
-              <p className="mb-10 text-base md:text-lg text-text-secondary font-sans font-light leading-relaxed max-w-2xl mx-auto">
-                {t('description')}
-              </p>
-            </div>
-            <div className="animate-fade-in-up-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/gift-packs" className="btn-pill btn-primary text-sm">
-                {t('exploreButton')}
-              </Link>
-              <Link href="/about" className="btn-pill btn-outline text-sm">
-                {t('storyButton')}
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Divider */}
-        <div className="max-w-24 mx-auto border-t border-honey" />
+        <HeroSection />
+        <DeconstructedAlfajor />
 
         {/* Featured Gift Packs */}
         <section className="w-full px-6 section-breathe bg-cream/50">

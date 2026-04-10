@@ -12,6 +12,13 @@
   --color-cream: #F5F0E8;
   --color-warm-white: #F9F7F3;
 
+  /* New Theme Colors */
+  --color-arena: #E9DCC9;
+  --color-earth-deep: #2D1B0F;
+  --color-pistachio: #93C572;
+  --color-pistachio-dark: #6B8E23;
+  --color-bronze: #804A00;
+
   /* Accent & Surface */
   --color-sage: #8A9A7B;
   --color-sage-light: #A8B89A;
@@ -39,6 +46,9 @@
   /* Typography */
   --font-serif: 'Playfair Display', 'Georgia', serif;
   --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-lato: 'Lato', sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
