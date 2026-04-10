@@ -11,7 +11,16 @@
     "subtitle": "Alfajores Artesanais Premium",
     "description": "Descubra a riqueza da tradição em cada mordida. Os nossos alfajores artesanais são feitos à mão com paixão, usando métodos tradicionais e ingredientes premium.",
     "exploreButton": "Explorar Alfajores",
-    "storyButton": "A Nossa História"
+    "storyButton": "A Nossa História",
+    "brandTitle": "ENTRE MARES",
+    "brandSubtitle": "ARTESÃOS DO MAR • ALFAJORES DE AUTOR",
+    "tagline": "ENTRE MARES: ONDE A PAIXÃO PELO DOCE DE LEITE SE ENCONTRA COM A INOVAÇÃO ARTESANAL",
+    "discover": "Descobrir"
+  },
+  "pistacheSection": {
+    "title": "PISTÁCIO INTENSO",
+    "subtitle": "Artesania em Movimento",
+    "bottomTagline": "ENTRE MARES · ALFAJORES PREMIUM ARTESANAIS"
   },
   "packs": {
     "featured": "Os Nossos Alfajores",

@@ -11,7 +11,16 @@
     "subtitle": "Premium Handcrafted Alfajores",
     "description": "Discover the rich heritage of craftsmanship in every bite. Our handcrafted alfajores are made with passion, using traditional methods and premium ingredients.",
     "exploreButton": "Explore Alfajores",
-    "storyButton": "Our Story"
+    "storyButton": "Our Story",
+    "brandTitle": "ENTRE MARES",
+    "brandSubtitle": "ARTISANS OF THE SEA • SIGNATURE ALFAJORES",
+    "tagline": "ENTRE MARES: WHERE PASSION FOR DULCE DE LECHE MEETS ARTISANAL INNOVATION",
+    "discover": "Discover"
+  },
+  "pistacheSection": {
+    "title": "INTENSE PISTACHIO",
+    "subtitle": "Craftsmanship in Motion",
+    "bottomTagline": "ENTRE MARES · PREMIUM HANDCRAFTED ALFAJORES"
   },
   "packs": {
     "featured": "Our Alfajores",

@@ -3,9 +3,11 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('hero')
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
@@ -70,7 +72,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
           >
-            ENTRE MARES
+            {t('brandTitle')}
           </motion.h1>
           <motion.p
             className="hero-brand-subtitle"
@@ -78,7 +80,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
           >
-            ARTESANOS DEL MAR • ALFAJORES DE AUTOR
+            {t('brandSubtitle')}
           </motion.p>
         </div>
 
@@ -90,11 +92,11 @@ export default function HeroSection() {
           transition={{ duration: 1.2, delay: 0.8 }}
         >
           <p className="hero-tagline">
-            ENTRE MARES: DONDE LA PASIÓN POR EL DULCE DE LECHE SE ENCUENTRA CON LA INNOVACIÓN ARTESANAL
+            {t('tagline')}
           </p>
           {/* Scroll indicator */}
           <div className="mt-6 flex flex-col items-center gap-2">
-            <span className="text-white/50 text-xs tracking-widest font-lato uppercase">Descubrir</span>
+            <span className="text-white/50 text-xs tracking-widest font-lato uppercase">{t('discover')}</span>
             <motion.div
               className="w-px h-8 bg-white/40"
               animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.4, 1, 0.4] }}

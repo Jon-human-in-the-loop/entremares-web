@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 /* ──────────────────────────────────────────────
    COMPONENTE PRINCIPAL: InteractiveAlfajor
@@ -10,6 +11,7 @@ import Image from 'next/image'
 
 export default function DeconstructedAlfajor() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('pistacheSection')
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 })
 
   const { scrollYProgress } = useScroll({
@@ -162,20 +164,20 @@ export default function DeconstructedAlfajor() {
             className="font-montserrat font-bold text-white tracking-tight mb-3"
             style={{ fontSize: 'clamp(1.8rem, 5vw, 4.5rem)', textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}
           >
-            PISTACHE INTENSO
+            {t('title')}
           </h3>
           <p
             className="font-lato tracking-[0.3em] uppercase"
             style={{ color: '#93C572', textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
           >
-            Artesanía en Movimiento
+            {t('subtitle')}
           </p>
         </motion.div>
 
         {/* ── Bottom tagline ── */}
         <div className="absolute bottom-5 left-0 right-0 z-30 text-center px-6">
           <p className="text-white/30 text-[10px] md:text-xs font-lato tracking-[0.2em] uppercase max-w-2xl mx-auto">
-            ENTRE MARES · ALFAJORES PREMIUM ARTESANALES
+            {t('bottomTagline')}
           </p>
         </div>
       </div>
