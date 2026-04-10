@@ -128,10 +128,11 @@ export default function DeconstructedAlfajor() {
   const [currentFrame, setCurrentFrame] = useState(0)
 
   useEffect(() => {
-    return frameIndex.onRender((latest) => {
-      const idx = Math.min(Math.floor(latest as number), frameImages.length - 1)
-      setCurrentFrame(idx)
+    const unsubscribe = frameIndex.onChange((latest) => {
+      const idx = Math.min(Math.floor(latest), frameImages.length - 1)
+      setCurrentFrame(Math.max(0, idx))
     })
+    return unsubscribe
   }, [frameIndex, frameImages.length])
 
   // Parallax y rotación sutil
