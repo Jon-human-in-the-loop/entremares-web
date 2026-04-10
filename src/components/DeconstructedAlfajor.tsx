@@ -5,98 +5,12 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import Image from 'next/image'
 
 /* ──────────────────────────────────────────────
-   PARTÍCULAS — Ahora son imágenes PNG reales
-   ────────────────────────────────────────────── */
-
-interface Particle {
-  id: number
-  x: number
-  y: number
-  size: number
-  rotation: number
-  speed: number
-  imageSrc: string
-  driftX: number
-  driftY: number
-  flipX: boolean
-}
-
-const PARTICLE_IMAGES = [
-  '/images/particles/pistachio-1.png',
-  '/images/particles/pistachio-2.png',
-  '/images/particles/crumbs.png',
-]
-
-function generateParticles(count: number): Particle[] {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 20 + Math.random() * 45, // 20px to 65px
-    rotation: Math.random() * 360,
-    speed: 0.15 + Math.random() * 0.35,
-    imageSrc: PARTICLE_IMAGES[Math.floor(Math.random() * PARTICLE_IMAGES.length)] ?? '/images/particles/pistachio-1.png',
-    driftX: (Math.random() - 0.5) * 25,
-    driftY: (Math.random() - 0.5) * 25,
-    flipX: Math.random() > 0.5,
-  }))
-}
-
-/* ──────────────────────────────────────────────
-   PARTÍCULA INDIVIDUAL — Imagen real flotante
-   ────────────────────────────────────────────── */
-
-function ParticleElement({ p, mouseX, mouseY }: { p: Particle; mouseX: number; mouseY: number }) {
-  const dx = (mouseX - 50) * 0.06 * p.speed
-  const dy = (mouseY - 50) * 0.06 * p.speed
-
-  return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{
-        left: `${p.x}%`,
-        top: `${p.y}%`,
-        width: p.size,
-        height: p.size,
-        scaleX: p.flipX ? -1 : 1,
-      }}
-      animate={{
-        x: [p.driftX, -p.driftX, p.driftX],
-        y: [p.driftY, -p.driftY, p.driftY],
-        translateX: -dx * 18,
-        translateY: -dy * 18,
-        rotate: [p.rotation, p.rotation + 15, p.rotation - 10, p.rotation],
-      }}
-      transition={{
-        x: { duration: 12 + p.speed * 6, repeat: Infinity, ease: 'easeInOut' },
-        y: { duration: 14 + p.speed * 5, repeat: Infinity, ease: 'easeInOut' },
-        rotate: { duration: 16 + p.speed * 4, repeat: Infinity, ease: 'easeInOut' },
-        translateX: { type: 'spring', stiffness: 30, damping: 25 },
-        translateY: { type: 'spring', stiffness: 30, damping: 25 },
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={p.imageSrc}
-        alt=""
-        width={p.size}
-        height={p.size}
-        className="w-full h-full object-contain"
-        style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
-        loading="lazy"
-      />
-    </motion.div>
-  )
-}
-
-/* ──────────────────────────────────────────────
-   COMPONENTE PRINCIPAL
+   COMPONENTE PRINCIPAL: InteractiveAlfajor
    ────────────────────────────────────────────── */
 
 export default function DeconstructedAlfajor() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 })
-  const [particles] = useState(() => generateParticles(28))
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -123,12 +37,16 @@ export default function DeconstructedAlfajor() {
     return unsubscribe
   }, [frameIndex, frameImages.length])
 
-  // 3D mouse tracking
+  // 3D mouse tracking para el alfajor
   const mouseRotateX = useSpring((mousePos.y - 50) * -0.12, { stiffness: 50, damping: 20 })
   const mouseRotateY = useSpring((mousePos.x - 50) * 0.12, { stiffness: 50, damping: 20 })
 
-  // Scale up as user scrolls deeper
+  // Escala del alfajor
   const scale = useTransform(scrollYProgress, [0, 0.5, 0.8], [0.9, 1, 1.15])
+
+  // Rotación del anillo de nueces/pistachos basado en el scroll
+  const explosionRotation = useTransform(scrollYProgress, [0, 1], [0, 120])
+  const explosionScale = useTransform(scrollYProgress, [0, 1], [1, 1.3])
 
   // Title fade in
   const titleOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1])
@@ -153,19 +71,33 @@ export default function DeconstructedAlfajor() {
     >
       <div className="sticky top-0 w-full h-screen overflow-hidden">
         {/* ── Dark Cinematic Background ── */}
-        <div className="absolute inset-0 bg-[#140a04]" />
+        <div className="absolute inset-0 bg-[#0f0805]" />
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(45,27,15,0.6) 0%, rgba(20,10,4,1) 70%)',
+            background: 'radial-gradient(ellipse at center, rgba(45,27,15,0.8) 0%, rgba(15,8,5,1) 80%)',
           }}
         />
 
-        {/* ── Floating Pistachios & Crumbs (Real images) ── */}
-        <div className="absolute inset-0 z-10 overflow-hidden">
-          {particles.map((p) => (
-            <ParticleElement key={p.id} p={p} mouseX={mousePos.x} mouseY={mousePos.y} />
-          ))}
+        {/* ── Explosion Ring (Nueces & Pistachos) ── */}
+        <div className="absolute inset-0 z-10 overflow-hidden flex items-center justify-center pointer-events-none">
+          <motion.div
+            style={{
+              rotate: explosionRotation,
+              scale: explosionScale,
+            }}
+            className="relative w-full h-full max-w-[1400px] max-h-[1400px]"
+          >
+            {/* El mix-blend-mode: screen hace desaparecer el fondo negro de la imagen de referencia */}
+            <Image
+              src="/images/particles/explosion.jpg"
+              alt="Frutos secos flotando"
+              fill
+              quality={100}
+              className="object-cover md:object-contain mix-blend-screen opacity-90"
+              sizes="100vw"
+            />
+          </motion.div>
         </div>
 
         {/* ── Brand Watermark ── */}
