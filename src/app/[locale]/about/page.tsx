@@ -14,7 +14,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
   const t = useTranslations('aboutPage')
 
   return (
-    <div className="py-12 px-4">
+    <div className="pb-12">
       {/* Hero Banner */}
       <section className="relative w-full px-4 py-32 md:py-48 overflow-hidden">
         {/* Background Image Container */}
