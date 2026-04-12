@@ -27,14 +27,14 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
             priority
           />
           {/* Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-dark-brown/50"></div>
+          <div className="absolute inset-0 bg-dark-brown/60"></div>
         </div>
 
-        <div className="relative mx-auto max-w-4xl text-center animate-fade-in-up z-10">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-cream mb-4 drop-shadow-sm">
+        <div className="relative mx-auto max-w-4xl text-center animate-fade-in-up z-10 px-4">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-cream mb-4 drop-shadow-lg">
             {t('title')}
           </h1>
-          <p className="text-lg text-cream/90 font-sans drop-shadow-sm font-medium">
+          <p className="text-xl md:text-2xl text-cream font-sans drop-shadow-lg font-medium max-w-2xl mx-auto">
             {t('subtitle')}
           </p>
         </div>
