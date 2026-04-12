@@ -17,7 +17,7 @@ export const GIFT_PACKS: GiftPack[] = [
     isFeatured: true,
     description: 'Alfajor artesanal relleno de rico pistacho.',
     longDescription: 'El "Pistache Intenso" ofrece una experiencia vibrante, combinando nuestra emblemática masa con una crema rica y praliné de pistacho, recubierto de chocolate.',
-    image: '',
+    image: '/images/products/pistache-intenso.jpg',
     weight: '60g',
     ingredients: 'Pistachos, dulce de leche de pistacho, chocolate blanco, harina.',
     flavors: [
@@ -34,7 +34,7 @@ export const GIFT_PACKS: GiftPack[] = [
     isFeatured: true,
     description: 'Alfajor tierno bañado en chocolate blanco premium con trozos de nuez.',
     longDescription: 'Una fusión perfecta de suavidad y textura crocante. Nuestro alfajor de chocolate blanco con trozos de nueces seleccionadas es un clásico reimaginado para los paladares más exigentes.',
-    image: '',
+    image: '/images/products/chocolate-blanco-nuez.jpg',
     weight: '60g',
     ingredients: 'Chocolate blanco belga, nueces, dulce de leche, harina.',
     flavors: [
@@ -53,7 +53,7 @@ export const GIFT_PACKS: GiftPack[] = [
     badge: 'premium',
     description: 'Una experiencia refinada con notas de vino de Oporto.',
     longDescription: 'Un homenaje a nuestras raíces ibéricas y la influencia local. El relleno está suavemente infusionado con el prestigioso Vinho do Porto, envuelto en chocolate negro y ofreciendo un final aromático único.',
-    image: '',
+    image: '/images/products/vinho-do-porto.jpg',
     weight: '60g',
     ingredients: 'Chocolate 70% cacao, reducción de Vino de Oporto, dulce de leche, mantequilla.',
     flavors: [
@@ -70,7 +70,7 @@ export const GIFT_PACKS: GiftPack[] = [
     isFeatured: true,
     description: 'El equilibrio perfecto entre dulzura y toques de sal marina.',
     longDescription: 'Descubre el contraste adictivo de nuestro Caramelo Salado. El clásico dulce de leche fusionado con escamas de sal marina premium crea una explosión de sabor inigualable.',
-    image: '',
+    image: '/images/products/caramelo-salado.jpg',
     weight: '60g',
     ingredients: 'Dulce de leche premium, flor de sal, cobertura de chocolate con leche.',
     flavors: [
@@ -88,7 +88,7 @@ export const GIFT_PACKS: GiftPack[] = [
     badge: 'mostPopular',
     description: 'Para los verdaderos amantes del cacao puro.',
     longDescription: 'Un alfajor oscuro diseñado para los puristas del cacao. Con un baño triple de chocolate belga de 80% y un relleno de ganache profundo, esta pieza es pura intensidad.',
-    image: '',
+    image: '/images/products/chocolate-intenso.jpg',
     weight: '60g',
     ingredients: 'Cacao orgánico puro, ganache oscuro, masa sablée de cacao.',
     flavors: [
