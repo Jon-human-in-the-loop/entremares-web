@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import { CartProvider } from '@/context/CartContext'
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default async function LocaleLayout(props: {
             <div className="min-h-[calc(100vh-200px)] bg-warm-white">
               {children}
             </div>
+            <WhatsAppButton phoneNumber="351939106006" />
             <Footer />
           </CartProvider>
         </NextIntlClientProvider>
