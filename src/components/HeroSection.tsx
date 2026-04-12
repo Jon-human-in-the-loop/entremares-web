@@ -1,0 +1,110 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
+export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('hero')
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+
+  return (
+    <section
+      ref={containerRef}
+      id="hero"
+      className="relative w-full h-screen min-h-[600px] overflow-hidden"
+    >
+      {/* Background Hero Image — art direction: vertical for mobile, horizontal for desktop */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ y, backgroundColor: '#bfaa96' }}
+      >
+        {/* Mobile: vertical image */}
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/images/hero/hero-variedade-vertical.jpg"
+            alt="Variedad de alfajores Entre Mares"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        {/* Desktop: horizontal image */}
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/images/hero/hero-variedade-horizontal.webp"
+            alt="Variedad de alfajores Entre Mares"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+          />
+        </div>
+      </motion.div>
+
+      {/* Dark overlay for text readability */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{ background: 'linear-gradient(180deg, rgba(45,27,15,0.35) 0%, rgba(45,27,15,0.15) 40%, rgba(45,27,15,0.65) 100%)' }}
+      />
+
+      {/* Content */}
+      <motion.div
+        className="relative z-20 flex flex-col h-full"
+        style={{ opacity }}
+      >
+        {/* Top spacing to account for the global header */}
+        <div className="pt-24 md:pt-32" />
+
+        {/* Center: brand watermark */}
+        <div className="flex-1 flex flex-col items-center justify-center px-8">
+          <motion.h1
+            className="hero-brand-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
+          >
+            {t('brandTitle')}
+          </motion.h1>
+          <motion.p
+            className="hero-brand-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
+          >
+            {t('brandSubtitle')}
+          </motion.p>
+        </div>
+
+        {/* Bottom tagline */}
+        <motion.div
+          className="pb-12 px-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.8 }}
+        >
+          <p className="hero-tagline">
+            {t('tagline')}
+          </p>
+          {/* Scroll indicator */}
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <span className="text-white/50 text-xs tracking-widest font-lato uppercase">{t('discover')}</span>
+            <motion.div
+              className="w-px h-8 bg-white/40"
+              animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.4, 1, 0.4] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </section>
+  )
+}

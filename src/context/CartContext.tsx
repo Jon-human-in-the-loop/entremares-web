@@ -1,7 +1,9 @@
 'use client'
 
-import { createContext, useContext, useReducer, ReactNode } from 'react'
+import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react'
 import type { CartItem, CartState, GiftPack } from '@/types'
+
+const STORAGE_KEY = 'entremares-cart'
 
 type CartAction =
   | { type: 'ADD_ITEM'; pack: GiftPack }
@@ -9,6 +11,7 @@ type CartAction =
   | { type: 'INCREMENT'; packId: string }
   | { type: 'DECREMENT'; packId: string }
   | { type: 'CLEAR' }
+  | { type: 'HYDRATE'; items: CartItem[] }
 
 type CartContextValue = CartState & {
   addItem: (pack: GiftPack) => void
@@ -45,8 +48,6 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         items: state.items.filter((item) => item.pack.id !== action.packId),
       }
     case 'INCREMENT': {
-      const item = state.items.find((item) => item.pack.id === action.packId)
-      if (!item) return state
       return {
         ...state,
         items: state.items.map((item) =>
@@ -75,6 +76,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     }
     case 'CLEAR':
       return { items: [], totalItems: 0, totalPrice: 0 }
+    case 'HYDRATE':
+      return { ...state, items: action.items }
     default:
       return state
   }
@@ -96,6 +99,30 @@ export function CartProvider({ children }: { children: ReactNode }) {
     totalItems: 0,
     totalPrice: 0,
   })
+
+  // Hydrate cart from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          dispatch({ type: 'HYDRATE', items: parsed })
+        }
+      }
+    } catch {
+      // Ignore corrupted localStorage
+    }
+  }, [])
+
+  // Sync cart to localStorage on change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items))
+    } catch {
+      // Ignore write errors
+    }
+  }, [state.items])
 
   const totals = computeTotals(state.items)
 

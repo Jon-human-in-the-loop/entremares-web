@@ -1,71 +1,95 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import CartIndicator from './cart/CartIndicator'
 import LanguageSwitcher from './LanguageSwitcher'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const pathname = usePathname()
   const t = useTranslations('nav')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
-    { label: t('home'), href: '/' },
-    { label: t('giftPacks'), href: '/gift-packs' },
-    { label: t('about'), href: '/about' },
-    { label: t('contact'), href: '/contact' },
+    { label: t('home'), href: '/' as const },
+    { label: t('giftPacks'), href: '/gift-packs' as const },
+    { label: t('about'), href: '/about' as const },
+    { label: t('contact'), href: '/contact' as const },
   ]
 
-  const isActive = (href: string) => {
-    // Remove locale prefix for comparison
-    const cleanPathname = pathname.replace(/^\/(en|pt|es)/, '')
-    const cleanHref = href === '/' ? '/' : href
-    return cleanPathname === cleanHref
-  }
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href))
 
   return (
-    <header className="sticky top-0 z-50 bg-warm-white/95 backdrop-blur-sm border-b border-honey">
-      <div className="max-w-4xl mx-auto px-4 flex items-center justify-between h-16">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-500 ease-luxe ${
+        scrolled
+          ? 'header-glass shadow-sm'
+          : 'bg-warm-white/0'
+      }`}
+    >
+      {/* Announcement Bar */}
+      <div className="bg-dark-brown text-cream text-center py-2.5 px-4">
+        <p className="text-xs font-sans font-medium tracking-widest uppercase">
+          {t('announcement')}
+        </p>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
         {/* Logo */}
-        <Link href="/" className="font-serif font-bold text-2xl text-dark-brown">
-          Entremares
+        <Link href="/" className="font-serif font-bold text-lg md:text-3xl text-dark-brown tracking-[0.1em] md:tracking-[0.2em] hover:text-earth-brown transition-colors">
+          ENTREMARES
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-sm font-sans font-medium tracking-wide uppercase transition-all duration-300 ${
                 isActive(item.href)
-                  ? 'text-dark-brown border-b-2 border-warm-gold'
-                  : 'text-earth-brown hover:text-dark-brown'
+                  ? 'text-dark-brown'
+                  : 'text-text-secondary hover:text-dark-brown'
               }`}
             >
               {item.label}
+              {isActive(item.href) && (
+                <span className="block h-0.5 w-full bg-warm-gold mt-1 rounded-full" />
+              )}
             </Link>
           ))}
         </nav>
 
-        {/* Right Side: Language Switcher + Cart */}
-        <div className="flex items-center gap-4">
+        {/* Right Side */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/gift-packs"
+            className="hidden md:flex items-center justify-center font-sans font-bold text-[10px] tracking-[0.15em] uppercase bg-dark-brown text-cream px-5 py-2.5 rounded-full hover:bg-earth-brown transition-all duration-300 shadow-sm"
+          >
+            {t('buyNow')}
+          </Link>
           <LanguageSwitcher />
           <CartIndicator />
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 hover:bg-honey rounded-sm transition-colors"
+            className="lg:hidden p-2.5 hover:bg-cream rounded-lg transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X size={20} className="text-earth-brown" />
+              <X size={22} className="text-dark-brown" />
             ) : (
-              <Menu size={20} className="text-earth-brown" />
+              <Menu size={22} className="text-dark-brown" />
             )}
           </button>
         </div>
@@ -73,16 +97,16 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden border-t border-honey bg-cream">
-          <div className="max-w-4xl mx-auto px-4 py-4 flex flex-col gap-4">
+        <nav className="lg:hidden border-t border-border bg-warm-white animate-fade-in-up">
+          <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-5">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-base font-sans font-medium tracking-wide transition-colors ${
                   isActive(item.href)
                     ? 'text-dark-brown'
-                    : 'text-earth-brown hover:text-dark-brown'
+                    : 'text-text-secondary hover:text-dark-brown'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >

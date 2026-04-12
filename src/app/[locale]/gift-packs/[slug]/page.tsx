@@ -2,8 +2,10 @@ import { notFound } from 'next/navigation'
 import { GIFT_PACKS } from '@/lib/constants'
 import { formatPrice } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import AddToCartButton from '@/components/cart/AddToCartButton'
 import type { Metadata } from 'next'
+import { Link } from '@/i18n/routing'
 
 interface DetailPageProps {
   params: { slug: string; locale: string }
@@ -15,19 +17,26 @@ export function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }: DetailPageProps): Metadata {
-  const pack = GIFT_PACKS.find((p) => p.slug === params.slug)
+export async function generateMetadata({ params: { locale, slug } }: DetailPageProps): Promise<Metadata> {
+  const pack = GIFT_PACKS.find((p) => p.slug === slug)
   if (!pack) return { title: 'Not Found' }
 
+  const tData = await getTranslations({ locale, namespace: 'packsData' })
+  const packName = tData.has(`${pack.id}.name`) ? tData(`${pack.id}.name`) : pack.name
+  const packDesc = tData.has(`${pack.id}.description`) ? tData(`${pack.id}.description`) : pack.description
+
   return {
-    title: `${pack.name} | Entremares`,
-    description: pack.description,
+    title: `${packName} | Entremares`,
+    description: packDesc,
   }
 }
 
-export default function DetailPage({ params }: DetailPageProps) {
+export default function DetailPage({ params: { locale, slug } }: DetailPageProps) {
+  unstable_setRequestLocale(locale)
   const t = useTranslations()
-  const pack = GIFT_PACKS.find((p) => p.slug === params.slug)
+  const tData = useTranslations('packsData')
+  const tFlavors = useTranslations('packFlavors')
+  const pack = GIFT_PACKS.find((p) => p.slug === slug)
 
   if (!pack) {
     notFound()
@@ -38,94 +47,99 @@ export default function DetailPage({ params }: DetailPageProps) {
     limitedEdition: t('packDetails.limitedEdition'),
   }
 
+  const packName = tData.has(`${pack.id}.name`) ? tData(`${pack.id}.name`) : pack.name
+  const packLongDesc = tData.has(`${pack.id}.longDescription`) ? tData(`${pack.id}.longDescription`) : pack.longDescription
+
   return (
     <div className="py-12 px-4">
       {/* Breadcrumb */}
-      <section className="w-full px-4 py-4 border-b border-honey">
-        <div className="mx-auto max-w-4xl text-sm text-gray-600">
-          <a href="/" className="hover:text-earth-brown">Home</a>
-          {' / '}
-          <a href="/gift-packs" className="hover:text-earth-brown">Gift Packs</a>
-          {' / '}
-          <span className="text-earth-brown font-semibold">{pack.name}</span>
+      <section className="w-full px-4 py-4 border-b border-border-light">
+        <div className="mx-auto max-w-4xl text-sm text-text-muted font-sans uppercase tracking-wider text-[11px] font-semibold">
+          <Link href="/" className="hover:text-earth-brown transition-colors">{t('nav.home')}</Link>
+          <span className="mx-2 text-border">/</span>
+          <Link href="/gift-packs" className="hover:text-earth-brown transition-colors">{t('nav.giftPacks')}</Link>
+          <span className="mx-2 text-border">/</span>
+          <span className="text-earth-brown">{packName}</span>
         </div>
       </section>
 
       {/* Detail Content */}
-      <section className="w-full px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="w-full px-4 py-16 md:py-24 animate-fade-in-up">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
             {/* Image */}
             <div>
-              <div className="relative h-96 bg-gradient-to-b from-honey to-warm-gold rounded-sm overflow-hidden">
+              <div className="relative aspect-square md:aspect-auto md:h-[600px] bg-gradient-to-br from-honey/40 to-warm-gold/30 rounded-xl overflow-hidden shadow-premium">
                 {pack.badge && (
-                  <div className="absolute top-4 right-4 bg-earth-brown text-cream px-4 py-2 rounded-sm font-bold">
+                  <div className="absolute top-6 right-6 bg-dark-brown text-cream px-5 py-2 rounded-pill font-sans text-xs font-semibold tracking-wider uppercase">
                     {badgeLabels[pack.badge] || pack.badge}
                   </div>
                 )}
-                <div className="h-full flex items-center justify-center text-gray-300">
-                  {pack.name}
+                <div className="h-full flex items-center justify-center text-earth-brown/40 font-serif text-3xl font-bold">
+                  {packName}
                 </div>
               </div>
             </div>
 
             {/* Details */}
-            <div className="space-y-6">
+            <div className="space-y-8 flex flex-col justify-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown mb-2">
-                  {pack.name}
+                <h1 className="text-4xl md:text-5xl font-serif font-bold text-dark-brown mb-4">
+                  {packName}
                 </h1>
-                <p className="text-earth-brown text-lg">
+                <p className="text-text-muted font-sans text-sm tracking-widest uppercase mb-1">
                   {pack.pieces} {t('packDetails.pieces')}
                 </p>
+                <div className="w-12 h-0.5 bg-warm-gold mt-6 mb-6"></div>
               </div>
 
-              <div className="border-t border-honey pt-6">
-                <p className="text-3xl font-bold text-warm-gold">
+              <div className="pb-4">
+                <p className="text-3xl font-serif font-bold text-warm-gold">
                   {formatPrice(pack.price, 'en')}
                 </p>
               </div>
 
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {pack.longDescription}
+              <p className="text-text-secondary leading-relaxed font-sans font-light text-lg">
+                {packLongDesc}
               </p>
 
               {/* Flavors */}
-              <div>
-                <h3 className="font-semibold text-dark-brown mb-3 uppercase text-sm">
+              <div className="pt-4 border-t border-border-light">
+                <h3 className="font-sans font-semibold text-dark-brown mb-5 uppercase text-xs tracking-widest">
                   {t('packDetails.flavors')}
                 </h3>
-                <div className="space-y-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {pack.flavors.map((flavor) => (
-                    <div key={flavor.id} className="bg-cream p-3 rounded-sm">
-                      <p className="font-semibold text-earth-brown">
-                        {flavor.name}
+                    <div key={flavor.id} className="bg-cream/40 px-4 py-3 border border-border-light rounded-lg">
+                      <p className="font-sans font-semibold text-earth-brown text-sm">
+                        {tFlavors.has(flavor.id) ? tFlavors(flavor.id) : flavor.name}
                         {flavor.isSignature && (
-                          <span className="text-xs text-warm-gold ml-2">★ Signature</span>
+                          <span className="text-[10px] text-warm-gold ml-2 uppercase tracking-wide">★ Signature</span>
                         )}
                       </p>
-                      <p className="text-sm text-gray-600">{flavor.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Additional Info */}
-              <div className="border-t border-honey pt-6 space-y-2">
-                <p>
-                  <strong className="text-dark-brown">{t('packDetails.weight')}:</strong>{' '}
-                  {pack.weight}
+              <div className="pt-6 border-t border-border-light space-y-3 font-sans text-sm">
+                <p className="text-text-secondary">
+                  <strong className="text-dark-brown font-semibold uppercase tracking-wider text-[11px] mr-2">{t('packDetails.weight')}:</strong>{' '}
+                  <span className="font-light">{pack.weight}</span>
                 </p>
-                <p>
-                  <strong className="text-dark-brown">{t('packDetails.ingredients')}:</strong>{' '}
-                  {pack.ingredients}
+                <p className="text-text-secondary leading-relaxed">
+                  <strong className="text-dark-brown font-semibold uppercase tracking-wider text-[11px] mr-2">{t('packDetails.ingredients')}:</strong>{' '}
+                  <span className="font-light">{pack.ingredients}</span>
                 </p>
               </div>
 
               {/* Add to Cart Button */}
-              {pack.available && (
-                <AddToCartButton pack={pack} />
-              )}
+              <div className="pt-6">
+                {pack.available && (
+                  <AddToCartButton pack={pack} />
+                )}
+              </div>
             </div>
           </div>
         </div>

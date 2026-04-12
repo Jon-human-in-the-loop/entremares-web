@@ -1,22 +1,35 @@
 {
   "nav": {
-    "home": "Inicio",
-    "giftPacks": "Nuestros Alfajores",
-    "about": "Acerca de",
-    "contact": "Contacto"
+    "home": "INICIO",
+    "giftPacks": "Nuestros alfajores",
+    "about": "SOBRE NOSOTROS",
+    "contact": "CONTACTO",
+    "buyNow": "COMPRAR AHORA",
+    "announcement": "✦ Alfajores Premium Artesanales — Hechos con Amor ✦"
   },
   "hero": {
     "title": "Entremares",
     "subtitle": "Alfajores Artesanales Premium",
     "description": "Descubre la riqueza de la tradición en cada bocado. Nuestros alfajores artesanales se hacen a mano con pasión, utilizando métodos tradicionales e ingredientes premium.",
-    "exploreButton": "Explorar Packs",
-    "storyButton": "Nuestra Historia"
+    "exploreButton": "Explorar Alfajores",
+    "storyButton": "Nuestra Historia",
+    "brandTitle": "ENTRE MARES",
+    "brandSubtitle": "ARTESANOS DEL MAR • ALFAJORES DE AUTOR",
+    "tagline": "ENTRE MARES: DONDE LA PASIÓN POR EL DULCE DE LECHE SE ENCUENTRA CON LA INNOVACIÓN ARTESANAL",
+    "discover": "Descubrir"
+  },
+  "pistacheSection": {
+    "title": "PISTACHE INTENSO",
+    "subtitle": "Artesanía en Movimiento",
+    "bottomTagline": "ENTRE MARES · ALFAJORES PREMIUM ARTESANALES"
   },
   "packs": {
-    "featured": "Packs Curados",
-    "classic": "Pack Clásico",
-    "premium": "Pack Premium",
-    "special": "Edición Especial"
+    "featured": "Nuestros Alfajores",
+    "subtitle": "Nuestra Colección",
+    "description": "Descubre nuestra selección curada de alfajores artesanales, cada uno elaborado a mano con ingredientes premium.",
+    "classic": "Pistache Intenso",
+    "premium": "Vinho do Porto",
+    "special": "Chocolate Intenso"
   },
   "packDetails": {
     "pieces": "piezas",
@@ -32,8 +45,44 @@
   "cart": {
     "addToCart": "Añadir al Carrito",
     "cartEmpty": "Tu carrito está vacío",
+    "emptyDescription": "Explora nuestros alfajores artesanales y añade algo especial.",
+    "cartTitle": "Carrito de Compras",
     "items": "artículos",
-    "total": "Total"
+    "total": "Total",
+    "product": "Producto",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "pieces": "piezas",
+    "continueShopping": "Seguir Comprando",
+    "checkout": "Finalizar Compra"
+  },
+  "checkout": {
+    "title": "Pago",
+    "shippingDetails": "Datos de Envío",
+    "name": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Número de Teléfono",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "postalCode": "Código Postal",
+    "orderSummary": "Resumen del Pedido",
+    "processing": "Procesando...",
+    "placeOrder": "Realizar Pedido",
+    "orderConfirmed": "¡Pedido Confirmado!",
+    "orderConfirmedDescription": "Gracias por tu pedido. Te hemos enviado un email de confirmación.",
+    "backToHome": "Volver al Inicio",
+    "payment": {
+      "title": "Método de Pago",
+      "mbway": "MB WAY",
+      "mbwayDesc": "Paga directamente con tu app MB WAY.",
+      "multibanco": "Multibanco",
+      "multibancoDesc": "Paga en tu banco o cajero Multibanco.",
+      "pendingMbway": "Revisa tu app MB WAY para confirmar el pago.",
+      "multibancoEntity": "Entidad",
+      "multibancoReference": "Referencia",
+      "multibancoValue": "Valor"
+    }
   },
   "brand": {
     "heritage": "Nuestra Historia",
@@ -49,8 +98,11 @@
   },
   "form": {
     "name": "Nombre",
+    "namePlaceholder": "Tu nombre completo",
     "email": "Correo Electrónico",
+    "emailPlaceholder": "tu@email.com",
     "message": "Mensaje",
+    "messagePlaceholder": "Cuéntanos qué necesitas...",
     "send": "Enviar",
     "sending": "Enviando...",
     "success": "¡Gracias! Nos pondremos en contacto pronto.",
@@ -65,7 +117,71 @@
     "copyright": "Todos los derechos reservados."
   },
   "errors": {
-    "notFound": "Pack no encontrado",
-    "notFoundDescription": "Lo sentimos, el pack que buscas no existe."
+    "notFound": "Alfajor no encontrado",
+    "notFoundDescription": "Lo sentimos, el alfajor que buscas no existe."
+  },
+  "aboutPage": {
+    "title": "Nuestra Historia",
+    "subtitle": "Herencia, tradición y excelencia artesanal",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "En Entremares creemos que cada alfajor cuenta una historia. Estamos comprometidos a preservar las recetas tradicionales argentinas y llevarlas al mundo con orgullo. Cada pieza está hecha a mano con los mejores ingredientes y una inquebrantable atención al detalle."
+    },
+    "excellence": {
+      "title": "Excelencia Artesanal",
+      "description": "Nuestros artesanos utilizan técnicas honradas por el tiempo y transmitidas de generación en generación. Nos negamos a hacer concesiones en materia de calidad, y por eso utilizamos sólo la mejor mantequilla, dulce de leche puro y chocolate de primera en cada alfajor que creamos."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "authenticity": {
+        "title": "Autenticidad",
+        "desc": "Honrando las recetas y métodos tradicionales"
+      },
+      "quality": {
+        "title": "Calidad",
+        "desc": "Utilizando únicamente los mejores ingredientes premium"
+      },
+      "craftsmanship": {
+        "title": "Artesanía",
+        "desc": "Elaborado a mano con cuidado y atención al detalle"
+      }
+    }
+  },
+  "packsData": {
+    "pistache-intenso": {
+      "name": "Pistache Intenso",
+      "description": "Alfajor artesanal relleno de rico pistacho.",
+      "longDescription": "El 'Pistache Intenso' ofrece una experiencia vibrante, combinando nuestra emblemática masa con una crema rica y praliné de pistacho, recubierto de chocolate blanca."
+    },
+    "chocolate-blanco-nuez": {
+      "name": "Chocolate Blanco con Nuez",
+      "description": "Alfajor tierno bañado en chocolate blanco premium con trozos de nuez.",
+      "longDescription": "Una fusión perfecta de suavidad y textura crocante. Nuestro alfajor de chocolate blanco con trozos de nueces seleccionadas es un clásico reimaginado para los paladares más exigentes."
+    },
+    "vinho-do-porto": {
+      "name": "Vinho do Porto",
+      "description": "Una experiencia refinada con notas de vino de Oporto.",
+      "longDescription": "Un homenaje a nuestras raíces ibéricas y la influencia local. El relleno está suavemente infusionado con el prestigioso Vinho do Porto, envuelto en chocolate negro y ofreciendo un final aromático único."
+    },
+    "caramelo-salado": {
+      "name": "Caramelo Salado",
+      "description": "El equilibrio perfecto entre dulzura y toques de sal marina.",
+      "longDescription": "Descubre el contraste adictivo de nuestro Caramelo Salado. El clásico dulce de leche fusionado con escamas de sal marina premium crea una explosión de sabor inigualable."
+    },
+    "chocolate-intenso": {
+      "name": "Chocolate Intenso",
+      "description": "Para los verdaderos amantes del cacao puro.",
+      "longDescription": "Un alfajor oscuro diseñado para los puristas del cacao. Con un baño triple de chocolate belga de 80% y un relleno de ganache profundo, esta pieza es pura intensidad."
+    }
+  },
+  "packFlavors": {
+    "dulce-leche": "Dulce de Leche",
+    "chocolate": "Chocolate",
+    "limon": "Limón",
+    "framboesa": "Frambuesa",
+    "cafe": "Café",
+    "pistacio": "Pistacho",
+    "flor-sal": "Flor de Sal",
+    "trufa": "Trufa Negra"
   }
 }
