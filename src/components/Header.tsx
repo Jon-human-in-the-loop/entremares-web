@@ -44,19 +44,19 @@ export default function Header() {
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-18">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18">
         {/* Logo */}
-        <Link href="/" className="font-serif font-bold text-lg md:text-3xl text-dark-brown tracking-[0.1em] md:tracking-[0.2em] hover:text-earth-brown transition-colors">
+        <Link href="/" className="font-serif font-bold text-lg md:text-2xl lg:text-3xl text-dark-brown tracking-[0.1em] lg:tracking-[0.15em] shrink-0 hover:text-earth-brown transition-colors">
           ENTREMARES
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-sans font-medium tracking-wide uppercase transition-all duration-300 ${
+              className={`text-[13px] whitespace-nowrap font-sans font-medium tracking-wide uppercase transition-all duration-300 ${
                 isActive(item.href)
                   ? 'text-dark-brown'
                   : 'text-text-secondary hover:text-dark-brown'
@@ -71,10 +71,10 @@ export default function Header() {
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 xl:gap-3 shrink-0">
           <Link
             href="/gift-packs"
-            className="hidden md:flex items-center justify-center font-sans font-bold text-[10px] tracking-[0.15em] uppercase bg-dark-brown text-cream px-5 py-2.5 rounded-full hover:bg-earth-brown transition-all duration-300 shadow-sm"
+            className="hidden md:flex items-center justify-center whitespace-nowrap font-sans font-bold text-[10px] tracking-[0.1em] uppercase bg-dark-brown text-cream px-4 py-2 rounded-full hover:bg-earth-brown transition-all duration-300 shadow-sm"
           >
             {t('buyNow')}
           </Link>
