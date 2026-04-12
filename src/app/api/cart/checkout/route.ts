@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { validateCheckoutForm } from '@/lib/validation'
 import { sendOrderConfirmationEmail } from '@/lib/email'
+import { createMBWayPayment, createMultibancoReference } from '@/lib/ifthenpay'
 import fs from 'fs/promises'
 import path from 'path'
 
@@ -8,6 +9,20 @@ function generateOrderId(): string {
   const timestamp = Date.now().toString(36).toUpperCase()
   const random = Math.random().toString(36).substring(2, 6).toUpperCase()
   return `EM-${timestamp}-${random}`
+}
+
+async function saveOrder(orderId: string, order: object) {
+  try {
+    const ordersDir = path.join(process.cwd(), 'data', 'orders')
+    await fs.mkdir(ordersDir, { recursive: true })
+    await fs.writeFile(
+      path.join(ordersDir, `${orderId}.json`),
+      JSON.stringify(order, null, 2)
+    )
+  } catch {
+    // Vercel serverless doesn't have a writable FS — that's OK
+    console.warn('[Checkout] Could not save order to filesystem (expected on serverless)')
+  }
 }
 
 export async function POST(request: Request) {
@@ -20,21 +35,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ errors }, { status: 400 })
     }
 
-    // Validate that cart has items
     if (!body.items || body.items.length === 0) {
-      return NextResponse.json(
-        { error: 'Cart is empty' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Cart is empty' }, { status: 400 })
     }
 
     const orderId = generateOrderId()
+    const paymentMethod: 'mbway' | 'multibanco' = body.paymentMethod || 'mbway'
 
     const order = {
       id: orderId,
       createdAt: new Date().toISOString(),
-      status: 'pending',
-      paymentMethod: body.paymentMethod || 'mbway',
+      status: 'pending_payment',
+      paymentMethod,
       customer: {
         name: body.shipping.name.trim(),
         email: body.shipping.email.trim(),
@@ -51,41 +63,62 @@ export async function POST(request: Request) {
         price: item.pack.price,
         quantity: item.quantity,
       })),
-      total: body.total,
+      total: body.total, // in cents
     }
 
-    let paymentDetails = null
+    // ── Call real Ifthenpay payment API ──────────────────────────────────────
 
-    if (order.paymentMethod === 'mbway') {
-      // TODO: Call Ifthenpay/EuPago MB WAY API here
+    let paymentDetails: Record<string, any> | null = null
+
+    if (paymentMethod === 'mbway') {
+      const result = await createMBWayPayment({
+        orderId,
+        amountCents: order.total,
+        mobileNumber: order.customer.phone,
+        email: order.customer.email,
+        description: `Entremares ${orderId}`,
+      })
+
+      if (!result.success) {
+        return NextResponse.json(
+          { error: result.error || 'MB WAY payment initiation failed' },
+          { status: 502 }
+        )
+      }
+
       paymentDetails = {
         method: 'mbway',
         mbwayPhone: order.customer.phone,
+        requestId: result.requestId,
       }
-    } else if (order.paymentMethod === 'multibanco') {
-      // TODO: Call Ifthenpay/EuPago Multibanco API here
+    } else if (paymentMethod === 'multibanco') {
+      const result = await createMultibancoReference({
+        orderId,
+        amountCents: order.total,
+        clientEmail: order.customer.email,
+        clientName: order.customer.name,
+        expiryDays: 3,
+      })
+
+      if (!result.success) {
+        return NextResponse.json(
+          { error: result.error || 'Multibanco reference generation failed' },
+          { status: 502 }
+        )
+      }
+
       paymentDetails = {
         method: 'multibanco',
-        entidade: '11223', // Mock entity
-        referencia: Math.floor(100000000 + Math.random() * 900000000).toString().replace(/(\d{3})(?=\d)/g, '$1 '), // Mock ref format 123 456 789
-        valor: order.total,
+        entidade: result.entidade,
+        referencia: result.referencia,
+        valor: result.valor,
       }
     }
 
-    // Save order to filesystem
-    try {
-      const ordersDir = path.join(process.cwd(), 'data', 'orders')
-      await fs.mkdir(ordersDir, { recursive: true })
-      await fs.writeFile(
-        path.join(ordersDir, `${orderId}.json`),
-        JSON.stringify(order, null, 2)
-      )
-    } catch (fsError) {
-      // Log but don't fail the order—Vercel serverless may not have writable fs
-      console.warn('Could not save order to filesystem (expected on serverless):', fsError)
-    }
+    // ── Persist order ────────────────────────────────────────────────────────
+    await saveOrder(orderId, { ...order, paymentDetails })
 
-    // Send confirmation emails
+    // ── Send confirmation email ──────────────────────────────────────────────
     try {
       await sendOrderConfirmationEmail({
         orderId,
@@ -95,9 +128,8 @@ export async function POST(request: Request) {
         total: order.total,
         shippingAddress: order.shipping,
       })
-    } catch (emailError) {
-      console.error('Failed to send order confirmation email:', emailError)
-      // Don't fail the order if email fails
+    } catch (emailErr) {
+      console.error('[Checkout] Failed to send confirmation email:', emailErr)
     }
 
     return NextResponse.json({
@@ -107,7 +139,7 @@ export async function POST(request: Request) {
       paymentDetails,
     })
   } catch (error) {
-    console.error('Checkout API error:', error)
+    console.error('[Checkout] API error:', error)
     return NextResponse.json(
       { error: 'Failed to process order. Please try again.' },
       { status: 500 }
