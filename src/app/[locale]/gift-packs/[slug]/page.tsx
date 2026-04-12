@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { GIFT_PACKS } from '@/lib/constants'
 import { formatPrice } from '@/lib/utils'
@@ -70,14 +71,18 @@ export default function DetailPage({ params: { locale, slug } }: DetailPageProps
             {/* Image */}
             <div>
               <div className="relative aspect-square md:aspect-auto md:h-[600px] bg-gradient-to-br from-honey/40 to-warm-gold/30 rounded-xl overflow-hidden shadow-premium">
+                {pack.image ? (
+                  <Image src={pack.image} alt={packName} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" priority />
+                ) : (
+                  <div className="h-full flex items-center justify-center text-earth-brown/40 font-serif text-3xl font-bold">
+                    {packName}
+                  </div>
+                )}
                 {pack.badge && (
-                  <div className="absolute top-6 right-6 bg-dark-brown text-cream px-5 py-2 rounded-pill font-sans text-xs font-semibold tracking-wider uppercase">
+                  <div className="absolute top-6 right-6 bg-dark-brown text-cream px-5 py-2 rounded-pill font-sans text-xs font-semibold tracking-wider uppercase z-10">
                     {badgeLabels[pack.badge] || pack.badge}
                   </div>
                 )}
-                <div className="h-full flex items-center justify-center text-earth-brown/40 font-serif text-3xl font-bold">
-                  {packName}
-                </div>
               </div>
             </div>
 

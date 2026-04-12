@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { formatPrice } from '@/lib/utils'
 import type { GiftPack } from '@/types'
 import { Link } from '@/i18n/routing'
@@ -35,15 +36,19 @@ export default function GiftPackCard({
       <Link href={`/gift-packs/${pack.slug}`}>
         <div className="card-premium group cursor-pointer h-full flex flex-col">
           {/* Image with hover zoom */}
-          <div className="relative img-hover-zoom aspect-[4/3] bg-gradient-to-br from-honey/40 to-warm-gold/30 shrink-0">
+          <div className="relative img-hover-zoom aspect-[4/3] bg-gradient-to-br from-honey/40 to-warm-gold/30 shrink-0 overflow-hidden">
+            {pack.image ? (
+              <Image src={pack.image} alt={packName} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+            ) : (
+              <div className="h-full flex items-center justify-center">
+                <span className="text-earth-brown/30 text-sm font-sans font-medium px-4 text-center">{packName}</span>
+              </div>
+            )}
             {pack.badge && (
               <div className="absolute top-4 right-4 bg-dark-brown/90 backdrop-blur-sm text-cream px-4 py-1.5 rounded-pill text-[11px] font-sans font-semibold tracking-wider uppercase z-10">
                 {badgeLabels[pack.badge] || pack.badge}
               </div>
             )}
-            <div className="h-full flex items-center justify-center">
-              <span className="text-earth-brown/30 text-sm font-sans font-medium px-4 text-center">{packName}</span>
-            </div>
           </div>
 
           {/* Info */}
@@ -71,15 +76,19 @@ export default function GiftPackCard({
   return (
     <div className="card-premium group h-full flex flex-col">
       {/* Image with hover zoom */}
-      <Link href={`/gift-packs/${pack.slug}`} className="block relative img-hover-zoom aspect-[4/3] bg-gradient-to-br from-honey/40 to-warm-gold/30 shrink-0">
+      <Link href={`/gift-packs/${pack.slug}`} className="block relative img-hover-zoom aspect-[4/3] bg-gradient-to-br from-honey/40 to-warm-gold/30 shrink-0 overflow-hidden">
+        {pack.image ? (
+          <Image src={pack.image} alt={packName} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+        ) : (
+          <div className="h-full flex items-center justify-center">
+            <span className="text-earth-brown/30 text-sm font-sans font-medium px-4 text-center">{packName}</span>
+          </div>
+        )}
         {pack.badge && (
           <div className="absolute top-4 right-4 bg-dark-brown/90 backdrop-blur-sm text-cream px-4 py-1.5 rounded-pill text-[11px] font-sans font-semibold tracking-wider uppercase z-10">
             {badgeLabels[pack.badge] || pack.badge}
           </div>
         )}
-        <div className="h-full flex items-center justify-center">
-          <span className="text-earth-brown/30 text-sm font-sans font-medium px-4 text-center">{packName}</span>
-        </div>
       </Link>
 
       {/* Content */}
