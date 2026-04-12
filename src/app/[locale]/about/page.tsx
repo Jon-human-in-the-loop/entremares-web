@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 
@@ -15,12 +16,25 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
   return (
     <div className="py-12 px-4">
       {/* Hero Banner */}
-      <section className="w-full px-4 py-16 md:py-24 bg-gradient-to-r from-honey to-warm-gold">
-        <div className="mx-auto max-w-4xl text-center animate-fade-in-up">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-dark-brown mb-4">
+      <section className="relative w-full px-4 py-32 md:py-48 overflow-hidden">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/about-hero.jpg" 
+            alt="Nuestra Historia - Entremares" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-dark-brown/50"></div>
+        </div>
+
+        <div className="relative mx-auto max-w-4xl text-center animate-fade-in-up z-10">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-cream mb-4 drop-shadow-sm">
             {t('title')}
           </h1>
-          <p className="text-lg text-earth-brown font-sans">
+          <p className="text-lg text-cream/90 font-sans drop-shadow-sm font-medium">
             {t('subtitle')}
           </p>
         </div>
