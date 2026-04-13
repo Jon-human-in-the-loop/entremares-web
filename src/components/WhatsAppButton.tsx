@@ -1,8 +1,10 @@
 'use client'
 
+import { useTranslations } from 'next-intl';
+
 export default function WhatsAppButton({ phoneNumber = '34600000000' }: { phoneNumber?: string }) {
-  // Mensaje por defecto cuando abren WhatsApp
-  const message = "¡Hola! Me gustaría saber más acerca de los alfajores de Entremares.";
+  const t = useTranslations('whatsapp');
+  const message = t('message');
 
   return (
     <a
