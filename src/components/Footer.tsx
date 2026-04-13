@@ -1,9 +1,10 @@
 import { Link } from '@/i18n/routing'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Footer() {
   const t = useTranslations('footer')
   const tNav = useTranslations('nav')
+  const locale = useLocale()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -58,8 +59,21 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-cream/10">
         <div className="max-w-6xl mx-auto px-6 py-6 text-center">
-          <p className="text-xs font-sans text-cream/30 tracking-wider">
-            © {currentYear} {t('brand')}. {t('copyright')}
+          <p className="text-xs font-sans text-cream/30 tracking-wider flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2">
+            <span>© {currentYear} {t('brand')}. {t('copyright')}</span>
+            <span className="hidden sm:inline opacity-50">|</span>
+            <span>
+              {locale === 'es' ? 'Desarrollado por' : locale === 'pt' ? 'Desenvolvido por' : 'Developed by'}{' '}
+              <a 
+                href="https://www.vanguardcrux.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-warm-gold font-medium transition-colors"
+                title="Vanguard Crux"
+              >
+                Vanguard Crux
+              </a>.
+            </span>
           </p>
         </div>
       </div>
