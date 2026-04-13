@@ -173,16 +173,14 @@ export async function POST(request: Request) {
 
     // ── Send confirmation email ──────────────────────────────────────────────
     try {
-      if (paymentMethod !== 'stripe') {
-        await sendOrderConfirmationEmail({
-          orderId,
-          customerName: order.customer.name,
-          customerEmail: order.customer.email,
-          items: order.items,
-          total: order.total,
-          shippingAddress: order.shipping,
-        })
-      }
+      await sendOrderConfirmationEmail({
+        orderId,
+        customerName: order.customer.name,
+        customerEmail: order.customer.email,
+        items: order.items,
+        total: order.total,
+        shippingAddress: order.shipping,
+      })
     } catch (emailErr) {
       console.error('[Checkout] Failed to send confirmation email:', emailErr)
     }
