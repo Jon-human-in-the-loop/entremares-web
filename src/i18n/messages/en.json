@@ -121,30 +121,12 @@
     "notFoundDescription": "Sorry, the alfajor you're looking for doesn't exist."
   },
   "aboutPage": {
-    "title": "Our Story",
-    "subtitle": "Heritage, tradition, and handcrafted excellence",
-    "mission": {
-      "title": "Our Mission",
-      "description": "At Entremares, we believe that every alfajor tells a story. We are committed to preserving traditional Argentine recipes while bringing them to the world with pride. Each piece is handcrafted with the finest ingredients and unwavering attention to detail."
-    },
-    "excellence": {
-      "title": "Handcrafted Excellence",
-      "description": "Our makers use time-honored techniques passed down through generations. We refuse to compromise on quality, which is why we use only the finest butter, pure dulce de leche, and premium chocolate in every alfajor we create."
-    },
-    "values": {
-      "title": "Our Values",
-      "authenticity": {
-        "title": "Authenticity",
-        "desc": "Honoring traditional recipes and methods"
-      },
-      "quality": {
-        "title": "Quality",
-        "desc": "Using only the finest, most premium ingredients"
-      },
-      "craftsmanship": {
-        "title": "Craftsmanship",
-        "desc": "Handcrafted with care and attention to detail"
-      }
+    "title": "About Us",
+    "subtitle": "Two. One kitchen. Small.",
+    "content": {
+      "p1": "Two.\nOne kitchen. Small.\nEntremares is born from a pair of hands and a curiosity — to know what happens when you bring to Portugal a sweet that still has no name here.",
+      "p2": "We work on a small scale, with hand-picked ingredients. We don't make many. We make them with time.",
+      "p3": "The rest of who we are is on Instagram. There, we show the kitchen from the inside — what goes right, what fails, and what is yet to come."
     }
   },
   "packsData": {

@@ -41,51 +41,18 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       </section>
 
       {/* Content */}
-      <section className="w-full px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl space-y-16">
-          <div className="animate-fade-in-up-delay-1">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              {t('mission.title')}
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg font-sans font-light">
-              {t('mission.description')}
-            </p>
-          </div>
-
-          <div className="animate-fade-in-up-delay-2">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              {t('excellence.title')}
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg font-sans font-light">
-              {t('excellence.description')}
-            </p>
-          </div>
-
-          <div className="animate-fade-in-up-delay-3">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-brown mb-6">
-              {t('values.title')}
-            </h2>
-            <ul className="space-y-6 text-gray-700 font-sans font-light">
-              <li className="flex gap-4 items-start">
-                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
-                <div>
-                  <strong className="text-dark-brown font-semibold">{t('values.authenticity.title')}:</strong> {t('values.authenticity.desc')}
-                </div>
-              </li>
-              <li className="flex gap-4 items-start">
-                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
-                <div>
-                  <strong className="text-dark-brown font-semibold">{t('values.quality.title')}:</strong> {t('values.quality.desc')}
-                </div>
-              </li>
-              <li className="flex gap-4 items-start">
-                <span className="text-warm-gold text-2xl leading-none mt-1">•</span>
-                <div>
-                  <strong className="text-dark-brown font-semibold">{t('values.craftsmanship.title')}:</strong> {t('values.craftsmanship.desc')}
-                </div>
-              </li>
-            </ul>
-          </div>
+      <section className="w-full px-6 py-16 md:py-24">
+        <div className="mx-auto max-w-3xl space-y-12 text-center animate-fade-in-up-delay-1">
+          <p className="text-earth-brown leading-relaxed text-xl md:text-2xl font-serif whitespace-pre-line">
+            {t('content.p1')}
+          </p>
+          <div className="w-12 h-px bg-warm-gold mx-auto"></div>
+          <p className="text-gray-700 leading-relaxed text-lg font-sans font-light whitespace-pre-line">
+            {t('content.p2')}
+          </p>
+          <p className="text-gray-700 leading-relaxed text-lg font-sans font-light whitespace-pre-line">
+            {t('content.p3')}
+          </p>
         </div>
       </section>
     </div>

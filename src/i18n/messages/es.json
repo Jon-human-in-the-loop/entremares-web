@@ -121,30 +121,12 @@
     "notFoundDescription": "Lo sentimos, el alfajor que buscas no existe."
   },
   "aboutPage": {
-    "title": "Nuestra Historia",
-    "subtitle": "Herencia, tradición y excelencia artesanal",
-    "mission": {
-      "title": "Nuestra Misión",
-      "description": "En Entremares creemos que cada alfajor cuenta una historia. Estamos comprometidos a preservar las recetas tradicionales argentinas y llevarlas al mundo con orgullo. Cada pieza está hecha a mano con los mejores ingredientes y una inquebrantable atención al detalle."
-    },
-    "excellence": {
-      "title": "Excelencia Artesanal",
-      "description": "Nuestros artesanos utilizan técnicas honradas por el tiempo y transmitidas de generación en generación. Nos negamos a hacer concesiones en materia de calidad, y por eso utilizamos sólo la mejor mantequilla, dulce de leche puro y chocolate de primera en cada alfajor que creamos."
-    },
-    "values": {
-      "title": "Nuestros Valores",
-      "authenticity": {
-        "title": "Autenticidad",
-        "desc": "Honrando las recetas y métodos tradicionales"
-      },
-      "quality": {
-        "title": "Calidad",
-        "desc": "Utilizando únicamente los mejores ingredientes premium"
-      },
-      "craftsmanship": {
-        "title": "Artesanía",
-        "desc": "Elaborado a mano con cuidado y atención al detalle"
-      }
+    "title": "Sobre Nosotros",
+    "subtitle": "Dos. Una cocina. Pequeña.",
+    "content": {
+      "p1": "Dos.\nUna cocina. Pequeña.\nEntremares nace de un par de manos y de una curiosidad — saber qué ocurre cuando se trae a Portugal un dulce que aquí aún no tiene nombre.",
+      "p2": "Trabajamos a pequeña escala, con ingredientes que elegimos a mano. No hacemos muchos. Los hacemos con tiempo.",
+      "p3": "El resto de lo que somos está en Instagram. Allí mostramos la cocina por dentro — lo que sale bien, lo que falla y lo que está por llegar."
     }
   },
   "packsData": {
