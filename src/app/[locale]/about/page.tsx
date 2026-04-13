@@ -31,12 +31,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         </div>
 
         <div className="relative mx-auto max-w-4xl text-center animate-fade-in-up z-10 px-4">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-cream mb-4 drop-shadow-lg">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-cream drop-shadow-lg">
             {t('title')}
           </h1>
-          <p className="text-xl md:text-2xl text-cream font-sans drop-shadow-lg font-medium max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
         </div>
       </section>
 
