@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/lib/utils'
 import { useRouter } from '@/i18n/routing'
-import { Loader2, CheckCircle, ShieldCheck, Smartphone, Building2 } from 'lucide-react'
+import { Loader2, CheckCircle, ShieldCheck, Smartphone, Building2, CreditCard } from 'lucide-react'
 
 export default function CheckoutForm() {
   const t = useTranslations('checkout')
@@ -22,7 +22,7 @@ export default function CheckoutForm() {
     city: '',
     postalCode: '',
   })
-  const [paymentMethod, setPaymentMethod] = useState<'mbway' | 'multibanco'>('mbway')
+  const [paymentMethod, setPaymentMethod] = useState<'mbway' | 'multibanco' | 'stripe'>('stripe')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [orderId, setOrderId] = useState('')
@@ -58,6 +58,12 @@ export default function CheckoutForm() {
           setErrorMessage(data.error || 'Something went wrong')
         }
         setStatus('error')
+        return
+      }
+
+      // Redirect to Stripe if available
+      if (data.stripeUrl) {
+        window.location.href = data.stripeUrl
         return
       }
 
@@ -248,6 +254,15 @@ export default function CheckoutForm() {
                   <span className={`font-semibold font-sans text-sm tracking-wide ${paymentMethod === 'multibanco' ? 'text-dark-brown' : 'text-text-secondary'}`}>{t('payment.multibanco')}</span>
                 </div>
                 <p className="text-[11px] text-text-muted font-sans leading-relaxed">{t('payment.multibancoDesc')}</p>
+              </label>
+
+              <label className={`cursor-pointer flex flex-col p-5 rounded-xl border-2 transition-all duration-300 sm:col-span-2 ${paymentMethod === 'stripe' ? 'border-dark-brown bg-dark-brown/5 shadow-sm' : 'border-border-light bg-white hover:border-dark-brown/30'}`}>
+                <input type="radio" name="payment" className="hidden" checked={paymentMethod === 'stripe'} onChange={() => setPaymentMethod('stripe')} />
+                <div className="flex items-center gap-3 mb-2">
+                  <CreditCard size={20} className={paymentMethod === 'stripe' ? 'text-dark-brown' : 'text-text-muted'} />
+                  <span className={`font-semibold font-sans text-sm tracking-wide ${paymentMethod === 'stripe' ? 'text-dark-brown' : 'text-text-secondary'}`}>Cartão de Crédito / Credit Card</span>
+                </div>
+                <p className="text-[11px] text-text-muted font-sans leading-relaxed">Pague com segurança via Stripe (Visa, Mastercard, MB WAY, Apple Pay).</p>
               </label>
             </div>
           </div>
