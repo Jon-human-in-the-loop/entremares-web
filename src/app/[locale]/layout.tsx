@@ -50,7 +50,7 @@ export default async function LocaleLayout(props: {
             <div className="min-h-[calc(100vh-200px)] bg-warm-white">
               {children}
             </div>
-            <WhatsAppButton phoneNumber="351939106006" />
+            <WhatsAppButton phoneNumber="351932897436" />
             <Footer />
           </CartProvider>
         </NextIntlClientProvider>
